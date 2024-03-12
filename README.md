@@ -19,7 +19,7 @@ Système de Paiement: Intégration d'un système de paiement sécurisé pour fac
 ### Cloner le Répertoire: Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
 bash
 Copy code
-git clone https://github.com/votre_utilisateur/nom_du_projet.git
+git clone https://github.com/hemza1/freelancing_platform
 
 ### Configuration de la Base de Données: Configurez les paramètres de la base de données dans le fichier config/database.php.
 
