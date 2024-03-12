@@ -18,22 +18,24 @@ Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouv
 
 ## Installation et Configuration
 
-### Cloner le Répertoire: Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
-bash
-Copy code
-git clone https://github.com/hemza1/freelancing_platform
+1. **Cloner le Répertoire**: Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
+    ```bash
+    git clone https://github.com/hemza1/freelancing_platform
+    ```
 
-### Configuration de la Base de Données: Configurez les paramètres de la base de données dans le fichier config/database.php.
+2. **Configuration de la Base de Données**: Configurez les paramètres de la base de données dans le fichier `config/database.php`.
 
-### Installation des Dépendances: Exécutez la commande suivante pour installer les dépendances nécessaires :
+3. **Installation des Dépendances**: Exécutez la commande suivante pour installer les dépendances nécessaires :
+    ```bash
+    composer install
+    ```
 
-Copy code
-composer install
-### Migration de la Base de Données: Exécutez les migrations pour créer les tables requises dans la base de données :
+4. **Migration de la Base de Données**: Exécutez les migrations pour créer les tables requises dans la base de données :
+    ```bash
+    php artisan migrate
+    ```
 
-Copy code
-php artisan migrate
-### Lancement du Serveur: Lancez le serveur en utilisant la commande suivante :
-
-Copy code
-php artisan serve
+5. **Lancement du Serveur**: Lancez le serveur en utilisant la commande suivante :
+    ```bash
+    php artisan serve
+    ```
