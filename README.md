@@ -6,12 +6,14 @@ Bienvenue dans la documentation du projet de fin d'études réalisé pour l'obte
 Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouver des freelancers pour divers besoins, tels que le développement web, le design graphique, la rédaction, etc. Les freelancers peuvent créer des profils détaillés présentant leurs compétences, leur expérience et leurs tarifs, tandis que les clients peuvent publier des projets et engager des freelancers pour les réaliser.
 
 ## Fonctionnalités Principales
-Inscription et Profilage: Les utilisateurs peuvent s'inscrire en tant que client ou freelancer et compléter leurs profils avec des informations pertinentes.
-Publication de Projets: Les clients peuvent publier des descriptions détaillées de leurs projets, y compris les exigences, les délais et les budgets.
-Recherche et Filtrage: Les utilisateurs peuvent rechercher des freelancers en fonction de critères spécifiques tels que les compétences, les avis clients et les tarifs.
-Messagerie Intégrée: Une messagerie interne permet aux clients et aux freelancers de communiquer facilement pour discuter des détails du projet.
-Gestion des Projets: Les clients peuvent suivre l'avancement de leurs projets, échanger des fichiers et valider les livrables.
-Système de Paiement: Intégration d'un système de paiement sécurisé pour faciliter les transactions entre les clients et les freelancers.
+
+- **Inscription et Profilage**: Les utilisateurs peuvent s'inscrire en tant que client ou freelancer et compléter leurs profils avec des informations pertinentes.
+- **Publication de Projets**: Les clients peuvent publier des descriptions détaillées de leurs projets, y compris les exigences, les délais et les budgets.
+- **Recherche et Filtrage**: Les utilisateurs peuvent rechercher des freelancers en fonction de critères spécifiques tels que les compétences, les avis clients et les tarifs.
+- **Messagerie Intégrée**: Une messagerie interne permet aux clients et aux freelancers de communiquer facilement pour discuter des détails du projet.
+- **Gestion des Projets**: Les clients peuvent suivre l'avancement de leurs projets, échanger des fichiers et valider les livrables.
+- **Système de Paiement**: Intégration d'un système de paiement sécurisé pour faciliter les transactions entre les clients et les freelancers.
+
 
 
 ## Installation et Configuration
