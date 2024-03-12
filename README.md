@@ -1,4 +1,4 @@
-# codify
+# Codify
 
 Bienvenue dans la documentation du projet de fin d'études réalisé pour l'obtention du DUT en 2022. Ce projet consiste en une plateforme de services freelance, offrant une interface pour les clients et les freelancers afin de faciliter la collaboration et la réalisation de divers projets.
 
