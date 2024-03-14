@@ -20,7 +20,6 @@ Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouv
 -**Page d'atterrissage côté Freelancer**
 <img width="949" alt="freelancer" src="https://github.com/hemza1/freelancing_platform/assets/47822519/90782012-d5d1-450b-a916-70c6463ec739">
 -**Liste des projets à postuler pour le freelancer**
-<img width="960" alt="clientliste" src="https://github.com/hemza1/freelancing_platform/assets/47822519/c36b7358-b35d-4f31-85f7-31f6d9fb0562">
 <img width="663" alt="login2" src="https://github.com/hemza1/freelancing_platform/assets/47822519/94db52f3-5b8c-4e2b-a385-89911368d487">
 <img width="660" alt="login" src="https://github.com/hemza1/freelancing_platform/assets/47822519/f4bc7007-3ce4-47bc-b142-6e4b427ea4ec">
 
