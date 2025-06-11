@@ -8,7 +8,7 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='client') {
   exit;
 }
 if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
-  header('Location: PFE/freelancer.php');
+  header('Location: projects/projects.php');
   exit;
 }
 ?>

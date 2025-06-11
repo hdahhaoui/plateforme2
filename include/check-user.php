@@ -15,7 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $row['password'])) {
                 $_SESSION['USER_ID'] = $row['id'];
                 $_SESSION['USER_TYPE'] = $row['type'];
-                header('Location: ../' . $row['type'] . '.php');
+                if ($row['type'] === 'freelancer') {
+                    header('Location: ../projects/projects.php');
+                } else {
+                    header('Location: ../client.php');
+                }
                 exit;
             }
         }
