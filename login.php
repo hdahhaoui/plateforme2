@@ -6,11 +6,11 @@ require 'include/db.php';
 
 if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
    if ($_SESSION['USER_TYPE']== 'client') {
-    header('Location: '.$_SESSION['USER_TYPE'].'.php');
-   }else {
-    header('Location: PFE/freelancer.php');
+    header('Location: client.php');
+   } else {
+    header('Location: projects/projects.php');
    }
-    exit;
+   exit;
 }
 
 ?>
