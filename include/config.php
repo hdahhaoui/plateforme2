@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'Codify';
+$db = 'freelancing_platform';
 $port = 3306;
 $site = 'Codify';
 $logo = 'assets/logo.png';
