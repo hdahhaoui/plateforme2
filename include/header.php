@@ -7,12 +7,7 @@ require_once __DIR__ . '/db.php';
 $username = '';
 if (isset($_SESSION['USER_ID'], $_SESSION['USER_TYPE'])) {
     $uid = $_SESSION['USER_ID'];
-    $type = $_SESSION['USER_TYPE'];
-    if ($type === 'client') {
-        $stmt = $mysqli->prepare('SELECT name FROM client WHERE cid=?');
-    } else {
-        $stmt = $mysqli->prepare('SELECT name FROM freelancer WHERE fid=?');
-    }
+    $stmt = $mysqli->prepare('SELECT name FROM users WHERE id=?');
     if ($stmt) {
         $stmt->bind_param('i', $uid);
         $stmt->execute();
