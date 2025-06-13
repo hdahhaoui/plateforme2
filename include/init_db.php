@@ -1,7 +1,26 @@
 <?php
 function initializeDatabase(mysqli $mysqli, string $schemaPath): void {
-    $result = $mysqli->query("SHOW TABLES LIKE 'users'");
-    if (!$result || $result->num_rows === 0) {
+    $tables = [
+        'users',
+        'client',
+        'freelancer',
+        'projects',
+        'post_req',
+        'mssgusers',
+        'messages'
+    ];
+
+    $missing = false;
+    foreach ($tables as $table) {
+        $table = $mysqli->real_escape_string($table);
+        $result = $mysqli->query("SHOW TABLES LIKE '$table'");
+        if (!$result || $result->num_rows === 0) {
+            $missing = true;
+            break;
+        }
+    }
+
+    if ($missing) {
         if (!file_exists($schemaPath)) {
             return; // schema missing
         }
