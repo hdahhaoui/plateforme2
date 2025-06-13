@@ -28,7 +28,9 @@ Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouv
     mysql -u <user> -p freelancing_platform < db/schema.sql
     ```
 
-   Le fichier `schema.sql` crée notamment la table `project` contenant les champs `id`, `user_id`, `title`, `description`, `budget`, `deadline`, `status` et `created_at`.
+
+   Le fichier `schema.sql` crée notamment la table `projects` contenant les champs `id`, `user_id`, `title`, `description`, `budget`, `deadline`, `status` et `created_at`.
+
 
 4. **Installation des Dépendances**: Exécutez la commande suivante pour installer les dépendances nécessaires :
     ```bash

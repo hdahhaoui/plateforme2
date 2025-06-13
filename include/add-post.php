@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $budget     = floatval($_POST['cost'] ?? 0);
 
     // Ensure the projects table exists in case the SQL schema has not been imported
-    $createQuery = "CREATE TABLE IF NOT EXISTS project (
+
+    $createQuery = "CREATE TABLE IF NOT EXISTS projects (
+
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
         title VARCHAR(255) NOT NULL,
@@ -21,11 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     )";
     $mysqli->query($createQuery);
 
-    $stmt = $mysqli->prepare('INSERT INTO project (user_id, title, description, budget, status) VALUES (?,?,?,?,\'open\')');
+
+    $stmt = $mysqli->prepare('INSERT INTO projects (user_id, title, description, budget, status) VALUES (?,?,?,?,\'open\')');
+
     if ($stmt) {
         $stmt->bind_param('issd', $uid, $title, $desc, $budget);
         $stmt->execute();
+        $newId = $mysqli->insert_id;
     }
+
 
     header('Location: ../client.php');
     exit;

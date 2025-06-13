@@ -18,7 +18,9 @@ if (!isset($_SESSION['USER_TYPE']) || ($_SESSION['USER_TYPE'] != 'freelancer' &&
 $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
-$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget`, `fid` FROM `project` WHERE `id` = $pid");
+
+$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget`, `fid` FROM `projects` WHERE `id` = $pid");
+
 if (!$result->num_rows) {
     exit('No project found.');
 }
@@ -280,7 +282,9 @@ $row = $result->fetch_assoc();
                         }
                     } else {
                         $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = $pid");
-                        $rs = $mysqli->query("SELECT * FROM `project` WHERE `id` = $pid");
+
+                        $rs = $mysqli->query("SELECT * FROM `projects` WHERE `id` = $pid");
+
                         $rw = $rs->fetch_assoc();
                         if ($rw['status'] == 'completed') {
                             echo '<p class="card-text"><span class="badge badge-success">Project Completed</span></p>';

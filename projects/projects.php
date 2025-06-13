@@ -16,7 +16,9 @@
  $row = $result->fetch_assoc();
  $lang = $row['lang'];
 
-$result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN project ON post_req.pid = project.id ORDER BY post_req.status DESC;");
+
+$result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req.pid = projects.id ORDER BY post_req.status DESC;");
+
  $count = $result->num_rows;
  
  $result3 = $mysqli->query("SELECT * FROM `freelancer` WHERE `fid` = $fid");

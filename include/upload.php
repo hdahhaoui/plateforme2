@@ -11,8 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $filename = basename($_FILES['prj']['name']);
         $path = $targetDir . time() . '_' . $filename;
         if (move_uploaded_file($_FILES['prj']['tmp_name'], $path)) {
-            $mysqli->query("ALTER TABLE project ADD COLUMN IF NOT EXISTS file VARCHAR(255)");
-            $stmt = $mysqli->prepare('UPDATE project SET file=? WHERE id=?');
+
+            $mysqli->query("ALTER TABLE projects ADD COLUMN IF NOT EXISTS file VARCHAR(255)");
+            $stmt = $mysqli->prepare('UPDATE projects SET file=? WHERE id=?');
             if ($stmt) {
                 $stmt->bind_param('si', $path, $pid);
                 $stmt->execute();
