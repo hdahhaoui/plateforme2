@@ -28,7 +28,7 @@ if (isset($_SESSION['USER_ID'])) {
   <?php if ($username): ?>
   <div class="ml-auto d-flex align-items-center">
     <span class="navbar-text mr-3"><?php echo htmlspecialchars($username); ?></span>
-    <a class="btn btn-outline-danger btn-sm" href="/include/logout.php">Logout</a>
+    <a class="btn btn-outline-danger btn-sm" href="include/logout.php">Logout</a>
   </div>
   <?php endif; ?>
 </nav>

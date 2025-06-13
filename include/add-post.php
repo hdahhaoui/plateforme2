@@ -32,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newId = $mysqli->insert_id;
     }
 
+    $_SESSION['msg'] = [
+        'type' => 'success',
+        'msg'  => 'Project posted successfully and will be visible to freelancers.'
+    ];
 
     header('Location: ../client.php');
     exit;

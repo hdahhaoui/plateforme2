@@ -108,6 +108,11 @@ $row8 = $result8->fetch_assoc();?>
 
   <div class="main-banner" id="top">
     <div class="container">
+      <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] != ''): ?>
+      <div class="alert alert-<?=$_SESSION['msg']['type']?> alert-dismissable mt-3">
+        <?=$_SESSION['msg']['msg']?>
+      </div>
+      <?php $_SESSION['msg'] = ''; unset($_SESSION['msg']); endif; ?>
       <div class="row">
         <div class="col-lg-12">
           <div class="row">
