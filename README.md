@@ -21,12 +21,14 @@ Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouv
     git clone https://github.com/hemza1/freelancing_platform
     ```
 
-2. **Configuration de la Base de Données**: Configurez les paramètres de la base de données dans le fichier `config/database.php`.
+2. **Configuration de la Base de Données**: Configurez les paramètres de connexion dans le fichier `include/config.php`.
 
 3. **Création des Tables**: Importez le fichier `db/schema.sql` dans votre base de données. Par exemple :
     ```bash
     mysql -u <user> -p freelancing_platform < db/schema.sql
     ```
+
+   Le fichier `schema.sql` crée notamment la table `projects` contenant les champs `id`, `user_id`, `title`, `description`, `budget`, `deadline`, `status` et `created_at`.
 
 4. **Installation des Dépendances**: Exécutez la commande suivante pour installer les dépendances nécessaires :
     ```bash

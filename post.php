@@ -15,7 +15,7 @@ if (empty($_GET['pid'])) {
     $pid = 0;
 } else {
     $pid = $_GET['pid'];
-    $result = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
+    $result = $mysqli->query("SELECT * FROM `projects` WHERE `id` = $pid");
     if ($result && $result->num_rows) {
         $row = $result->fetch_assoc();
     } else {
@@ -123,7 +123,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="name" class="text-info">Choose a name for your project</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="<?=@$row['name']?>">
+                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="<?=@$row['title']?>">
                                 <div class="invalid-feedback help text-left">
                                     Please enter name of project.
                                 </div>
@@ -148,7 +148,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="about" class="text-info">Tell us more about your project</label>
-                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required value="" rows="3"><?=@$row['detail']?></textarea>
+                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required value="" rows="3"><?=@$row['description']?></textarea>
                                 <div class="invalid-feedback help text-left">
                                     Please enter description of project.
                                 </div>
@@ -166,7 +166,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">What is your budget?</label>
-                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="<?=@$row['cost']?>" min="600" max="100000">
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="<?=@$row['budget']?>" min="600" max="100000">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your project budget.
                                 </div>
