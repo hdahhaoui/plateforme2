@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 require 'include/config.php';
@@ -24,6 +23,7 @@ if (empty($_GET['pid'])) {
     }
 }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     

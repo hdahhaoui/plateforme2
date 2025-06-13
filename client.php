@@ -15,6 +15,7 @@ $cid = $_SESSION['USER_ID'];
 
 if (!isset($_SESSION['unique_id'])) {
     header("location: post.php");
+    exit;
 }
 
 $resultss = $mysqli->query("SELECT * FROM `client` WHERE `cid` = $cid");
