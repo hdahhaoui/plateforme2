@@ -63,7 +63,7 @@ $row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
             </div>
             <div class="job-card-buttons">
                 <a class="btn" href="../projects.php?pid=<?=$row['id']?>">Apply Now</a>
-                <a class="btn" href="../users.php?pid=<?=$row['id']?>&cid=<?=$row['cid']?>">php chat</a>
+                <a class="btn" href="../users.php?pid=<?=$row['id']?>&cid=<?=$row['user_id']?>">php chat</a>
             </div>
         </div>
 <?php } ?>
