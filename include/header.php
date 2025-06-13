@@ -6,13 +6,17 @@ $username = '';
 if (isset($_SESSION['USER_ID'])) {
     $uid = $_SESSION['USER_ID'];
     if (isset($mysqli)) {
-        $stmt = $mysqli->prepare('SELECT name FROM users WHERE id=?');
+        $stmt = $mysqli->prepare('SELECT * FROM users WHERE id=?');
         if ($stmt) {
             $stmt->bind_param('i', $uid);
             $stmt->execute();
             $res = $stmt->get_result();
             if ($row = $res->fetch_assoc()) {
-                $username = $row['name'];
+                if (isset($row['name'])) {
+                    $username = $row['name'];
+                } elseif (isset($row['username'])) {
+                    $username = $row['username'];
+                }
             }
             $stmt->close();
         }
