@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+
 .help {
     font-size: 16px;
 }
@@ -28,4 +35,47 @@
     position: absolute;
     bottom:91%;
     left:80%;
+}
+
+.masthead {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.sinup-box {
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.sinup-box h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.btn-rounded.btn-lg {
+    padding: 12px 28px;
+    font-size: 18px;
 }
