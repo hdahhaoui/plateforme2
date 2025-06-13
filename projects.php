@@ -19,7 +19,8 @@ $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
 
-$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget` FROM `projects` WHERE `id` = $pid");
+$result = $mysqli->query("SELECT p.`id`, p.`title`, p.`description`, p.`budget`, u.`name` AS `client_name`
+    FROM `projects` p JOIN `users` u ON p.user_id = u.id WHERE p.`id` = $pid");
 
 // Determine the hired freelancer for this project, if any
 $fid_result = $mysqli->query("SELECT fid FROM post_req WHERE pid = $pid AND status = 'Hired' LIMIT 1");
@@ -159,6 +160,7 @@ $row['fid'] = $hired_fid;
             <div class="sinup-box card border-primary">
                 <div class="card-header bg-primary">
 <h3 class="m-0 text-light"><?=ucfirst($row['title'] ?? '')?></h3>
+<small class="text-light">Client: <?=ucfirst($row['client_name'] ?? '')?></small>
                 </div>
                 <div class="card-body text-left">
                     <div class="form-group">
