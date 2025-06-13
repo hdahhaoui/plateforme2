@@ -19,12 +19,18 @@ $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
 
-$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget`, `fid` FROM `projects` WHERE `id` = $pid");
+$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget` FROM `projects` WHERE `id` = $pid");
+
+// Determine the hired freelancer for this project, if any
+$fid_result = $mysqli->query("SELECT fid FROM post_req WHERE pid = $pid AND status = 'Hired' LIMIT 1");
+$hired_fid = $fid_result && $fid_result->num_rows ? $fid_result->fetch_assoc()['fid'] : null;
+
 
 if (!$result->num_rows) {
     exit('No project found.');
 }
 $row = $result->fetch_assoc();
+$row['fid'] = $hired_fid;
 ?>
 <!DOCTYPE html>
 <html lang="en">
