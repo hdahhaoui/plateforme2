@@ -23,17 +23,22 @@ Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouv
 
 2. **Configuration de la Base de Données**: Configurez les paramètres de la base de données dans le fichier `config/database.php`.
 
-3. **Installation des Dépendances**: Exécutez la commande suivante pour installer les dépendances nécessaires :
+3. **Création des Tables**: Importez le fichier `db/schema.sql` dans votre base de données. Par exemple :
+    ```bash
+    mysql -u <user> -p freelancing_platform < db/schema.sql
+    ```
+
+4. **Installation des Dépendances**: Exécutez la commande suivante pour installer les dépendances nécessaires :
     ```bash
     composer install
     ```
 
-4. **Migration de la Base de Données**: Exécutez les migrations pour créer les tables requises dans la base de données :
+5. **Migration de la Base de Données**: Exécutez les migrations pour créer les tables requises dans la base de données :
     ```bash
 
     php artisan migrate
     ```
-5. **Lancement du Serveur**: Lancez le serveur en utilisant la commande suivante :
+6. **Lancement du Serveur**: Lancez le serveur en utilisant la commande suivante :
     ```bash
     php artisan serve
     ```
