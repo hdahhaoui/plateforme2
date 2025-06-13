@@ -13,8 +13,8 @@
  $fid = $_SESSION['USER_ID'];
  //aji
  $result = $mysqli->query("SELECT `lang` FROM `freelancer` WHERE `fid` = $fid");
- $row = $result->fetch_assoc();
- $lang = $row['lang'];
+ $row = $result && $result->num_rows ? $result->fetch_assoc() : null;
+ $lang = $row['lang'] ?? '';
 
 
 $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req.pid = projects.id ORDER BY post_req.status DESC;");
@@ -22,7 +22,7 @@ $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req
  $count = $result->num_rows;
  
  $result3 = $mysqli->query("SELECT * FROM `freelancer` WHERE `fid` = $fid");
- $row3 = $result3->fetch_assoc();
+ $row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
 
 
  
@@ -48,7 +48,7 @@ $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req
    </div>
 
    <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
-   <div class="user-name"><?php echo $row3['name']?></div>
+   <div class="user-name"><?php echo $row3['name'] ?? ''?></div>
    <a class="logout-link" href="../include/logout.php">Logout</a>
   </div>
  </div>
