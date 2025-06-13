@@ -158,7 +158,7 @@ $row['fid'] = $hired_fid;
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card border-primary">
                 <div class="card-header bg-primary">
-<h3 class="m-0 text-light"><?=ucfirst($row['title'])?></h3>
+<h3 class="m-0 text-light"><?=ucfirst($row['title'] ?? '')?></h3>
                 </div>
                 <div class="card-body text-left">
                     <div class="form-group">
@@ -180,9 +180,9 @@ $row['fid'] = $hired_fid;
                         ?>
                     </div>
                     <h4 class="card-title h5"> Budget de Projet</h4>
-                    <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['budget']?></p>
+                    <p class="card-text"><i class="fa fa-rupee"></i> <?= $row['budget'] ?? '' ?></p>
                     <h4 class="card-title h5" >Description de Project </h4>
-                    <p class="card-text"name="descriptionInput" id="description" value="<?=ucfirst($row['description'])?>"><?=ucfirst($row['description'])?> </p>
+                    <p class="card-text"name="descriptionInput" id="description" value="<?=ucfirst($row['description'] ?? '')?>"><?=ucfirst($row['description'] ?? '')?> </p>
                     
                     <!--aji-->
                      
