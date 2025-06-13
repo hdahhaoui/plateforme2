@@ -1,19 +1,35 @@
 <?php
-require_once __DIR__.'/db.php';
+require_once __DIR__ . '/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $cid = $_SESSION['USER_ID'] ?? 0;
-    $title = trim($_POST['title'] ?? '');
-    $detail = trim($_POST['detail'] ?? '');
-    $cost = floatval($_POST['cost'] ?? 0);
+    $uid        = $_SESSION['USER_ID'] ?? 0;
+    $title      = trim($_POST['name'] ?? '');
+    $desc       = trim($_POST['about'] ?? '');
+    $budget     = floatval($_POST['cost'] ?? 0);
 
-    $stmt = $mysqli->prepare('INSERT INTO post_prj (cid,name,detail,cost) VALUES (?,?,?,?)');
+    // Ensure the projects table exists in case the SQL schema has not been imported
+    $createQuery = "CREATE TABLE IF NOT EXISTS project (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        title VARCHAR(255) NOT NULL,
+        description TEXT,
+        budget DECIMAL(10,2) DEFAULT 0,
+        deadline DATE,
+        status VARCHAR(20) DEFAULT 'open',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )";
+    $mysqli->query($createQuery);
+
+    $stmt = $mysqli->prepare('INSERT INTO project (user_id, title, description, budget, status) VALUES (?,?,?,?,\'open\')');
     if ($stmt) {
-        $stmt->bind_param('issd', $cid, $title, $detail, $cost);
+        $stmt->bind_param('issd', $uid, $title, $desc, $budget);
         $stmt->execute();
     }
+
     header('Location: ../client.php');
     exit;
 }
+
 header('Location: ../client.php');
 ?>
