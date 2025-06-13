@@ -59,7 +59,7 @@ $row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
             <div class="job-card-subtitle"><?=substr($row['description'], 0, 100)?></div>
             <div class="job-detail-buttons">
                 <span class="detail">Cost: <?=$row['budget']?></span>
-                <span class="detail"><?=$row['lang']?></span>
+                <span class="detail"><?= htmlspecialchars($row['lang'] ?? '') ?></span>
             </div>
             <div class="job-card-buttons">
                 <a class="btn" href="../projects.php?pid=<?=$row['id']?>">Apply Now</a>
