@@ -15,7 +15,9 @@ if (empty($_GET['pid'])) {
     $pid = 0;
 } else {
     $pid = $_GET['pid'];
+
     $result = $mysqli->query("SELECT * FROM `projects` WHERE `id` = $pid");
+
     if ($result && $result->num_rows) {
         $row = $result->fetch_assoc();
     } else {

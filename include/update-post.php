@@ -7,15 +7,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $desc   = trim($_POST['about'] ?? '');
     $budget = floatval($_POST['cost'] ?? 0);
 
+
     $stmt = $mysqli->prepare('UPDATE projects SET title=?, description=?, budget=? WHERE id=?');
+
     if ($stmt) {
         $stmt->bind_param('ssdi', $title, $desc, $budget, $pid);
         $stmt->execute();
     }
 
+
     header('Location: ../post.php?pid=' . $pid);
     exit;
-}
+}  
 
 header('Location: ../client.php');
 ?>
