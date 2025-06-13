@@ -16,7 +16,7 @@
  $row = $result->fetch_assoc();
  $lang = $row['lang'];
 
- $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN post_prj ON post_req.pid =post_prj.pid ORDER BY post_req.status DESC;");
+$result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN project ON post_req.pid = project.id ORDER BY post_req.status DESC;");
  $count = $result->num_rows;
  
  $result3 = $mysqli->query("SELECT * FROM `freelancer` WHERE `fid` = $fid");
@@ -97,7 +97,7 @@
               <path d="M512 92L383.7 0 256 91.5v1l127.7 91.6zm0 0M512 276.4l-128.3-92L256 275.9v1l127.7 91.5zm0 0M256 486.1l128.4-92-128.3-92zm0 0" fill="#feb0a5" />
              </svg>
              <?php
-        $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = {$row['pid']}");
+        $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = {$row['id']}");
             if ($res->num_rows) {
                 $r = $res->fetch_assoc();
                 $status = empty($r['status']) ? 'Requested' : $r['status'];
@@ -106,21 +106,21 @@
             }?>
              <div class="label"><?=$status?></div>
             </div>
-            <div class="job-card-title"><?=ucfirst($row['name'])?></div>
+            <div class="job-card-title"><?=ucfirst($row['title'])?></div>
             
             <div class="job-card-subtitle">
-            <?=substr($row['detail'], 0, 100)?>
+            <?=substr($row['description'], 0, 100)?>
             </div>
             <div class="job-card-subtitle">
             </div>
             <div class="job-detail-buttons">
-             <button class="search-buttons detail-button">Cost : </i> <?=$row['cost']?></button>
+             <button class="search-buttons detail-button">Cost : </i> <?=$row['budget']?></button>
              <button class="search-buttons detail-button"><?=$row['lang']?></button>
              
             </div>
             <div class="job-card-buttons">
-            <button class="search-buttons card-buttons"><a style="text-decoration:none;"href="../projects.php?pid=<?=$row['pid']?>">Apply Now</a></button>
-             <button class="search-buttons card-buttons-msg"><a style="text-decoration:none;"href="../users.php?pid=<?=$row['pid']?>&cid=<?=$row['cid']?>" >php chat</a></button>
+            <button class="search-buttons card-buttons"><a style="text-decoration:none;"href="../projects.php?pid=<?=$row['id']?>">Apply Now</a></button>
+             <button class="search-buttons card-buttons-msg"><a style="text-decoration:none;"href="../users.php?pid=<?=$row['id']?>&cid=<?=$row['cid']?>" >php chat</a></button>
             </div>
            </div>
         

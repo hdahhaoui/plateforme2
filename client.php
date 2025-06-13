@@ -236,7 +236,7 @@ $row8 = $result8->fetch_assoc();?>
   </div> -->
   <br> <br> <br>
   <?php
-            $result = $mysqli->query("SELECT * FROM `post_prj` WHERE `cid` = $cid");
+            $result = $mysqli->query("SELECT * FROM `project` WHERE `user_id` = $cid");
             $num_prj = $result->num_rows;
             ?>
             
@@ -258,12 +258,12 @@ $row8 = $result8->fetch_assoc();?>
                                             ?>
         <li class="table-row">
         <div style="    max-width: 15.333333%" class="col col-1" data-label="Job Id">
-                                                        <?=ucfirst($row['name'])?>
+                                                        <?=ucfirst($row['title'])?>
                                                     </div>
-        <div class="col col-2" data-label="Customer Name"><?=$row['category']?> </div>
-        <div class="col col-3" data-label="Amount"><?=$row['cost']?> $</div>
+        <div class="col col-2" data-label="Customer Name">-</div>
+        <div class="col col-3" data-label="Amount"><?=$row['budget']?> $</div>
         <?php
-                                                $res = $mysqli->query("SELECT `rid` FROM `post_req` WHERE `pid` = {$row['pid']}"); ?>
+                                                $res = $mysqli->query("SELECT `rid` FROM `post_req` WHERE `pid` = {$row['id']}"); ?>
         <div class="col col-4" data-label="Payment Status"><?=$res->num_rows?></div>
         <div class="col col-5" data-label="Payment Status"><?=empty($row['status']) ? 'pending' : $row['status']?></div>
         <?php if (empty($row['duration'])) {
@@ -278,13 +278,13 @@ $row8 = $result8->fetch_assoc();?>
         }?>
         
         <div style="    max-width: 33.333333%;    flex-basis: 29%;" class="col col-7" data-label="Payment Status"><div class="btns">
-        <a target="_blank" style="text-decoration:none ;" href="projects.php?pid=<?=$row['pid']?>&fid=<?=$row['fid']?>"  data-toggle="tooltip" data-original-title="Show request"><button class="act req">  
+        <a target="_blank" style="text-decoration:none ;" href="projects.php?pid=<?=$row['id']?>&fid=<?=$row['fid']?>"  data-toggle="tooltip" data-original-title="Show request"><button class="act req">
           toutes les requêtes
                                                     </button></a>
-           <a target="_blank" href="post.php?pid=<?=$row['pid']?>" data-toggle="tooltip" data-original-title="Delete">
+           <a target="_blank" href="post.php?pid=<?=$row['id']?>" data-toggle="tooltip" data-original-title="Delete">
            <button class="act ed"> modifier</button>
                                                     </a>
-          <a href="include/delete-post.php?pid=<?=$row['pid']?>" data-toggle="tooltip" data-original-title="Delete">
+          <a href="include/delete-post.php?pid=<?=$row['id']?>" data-toggle="tooltip" data-original-title="Delete">
           <button class="act del"> Supprimer</button></a></div></div>
       </li>
       <?php
