@@ -19,12 +19,18 @@ $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
 
-$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget`, `fid` FROM `projects` WHERE `id` = $pid");
+$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget` FROM `projects` WHERE `id` = $pid");
+
+// Determine the hired freelancer for this project, if any
+$fid_result = $mysqli->query("SELECT fid FROM post_req WHERE pid = $pid AND status = 'Hired' LIMIT 1");
+$hired_fid = $fid_result && $fid_result->num_rows ? $fid_result->fetch_assoc()['fid'] : null;
+
 
 if (!$result->num_rows) {
     exit('No project found.');
 }
 $row = $result->fetch_assoc();
+$row['fid'] = $hired_fid;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,7 +158,7 @@ $row = $result->fetch_assoc();
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card border-primary">
                 <div class="card-header bg-primary">
-<h3 class="m-0 text-light"><?=ucfirst($row['title'])?></h3>
+<h3 class="m-0 text-light"><?=ucfirst($row['title'] ?? '')?></h3>
                 </div>
                 <div class="card-body text-left">
                     <div class="form-group">
@@ -174,9 +180,9 @@ $row = $result->fetch_assoc();
                         ?>
                     </div>
                     <h4 class="card-title h5"> Budget de Projet</h4>
-                    <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['budget']?></p>
+                    <p class="card-text"><i class="fa fa-rupee"></i> <?= $row['budget'] ?? '' ?></p>
                     <h4 class="card-title h5" >Description de Project </h4>
-                    <p class="card-text"name="descriptionInput" id="description" value="<?=ucfirst($row['description'])?>"><?=ucfirst($row['description'])?> </p>
+                    <p class="card-text"name="descriptionInput" id="description" value="<?=ucfirst($row['description'] ?? '')?>"><?=ucfirst($row['description'] ?? '')?> </p>
                     
                     <!--aji-->
                      
