@@ -236,7 +236,7 @@ $row8 = $result8->fetch_assoc();?>
   </div> -->
   <br> <br> <br>
   <?php
-            $result = $mysqli->query("SELECT * FROM `project` WHERE `user_id` = $cid");
+            $result = $mysqli->query("SELECT * FROM `projects` WHERE `user_id` = $cid");
             $num_prj = $result->num_rows;
             ?>
             

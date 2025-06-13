@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS freelancer (
     FOREIGN KEY (fid) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS project (
+CREATE TABLE IF NOT EXISTS projects (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     title VARCHAR(255) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS post_req (
     duration INT,
     msg TEXT,
     status VARCHAR(20) DEFAULT 'Pending',
-    FOREIGN KEY (pid) REFERENCES project(id) ON DELETE CASCADE,
+    FOREIGN KEY (pid) REFERENCES projects(id) ON DELETE CASCADE,
     FOREIGN KEY (fid) REFERENCES freelancer(fid) ON DELETE CASCADE
 );
 
