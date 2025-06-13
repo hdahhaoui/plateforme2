@@ -13,4 +13,8 @@ $mysqli = $conn;
 if ($mysqli->connect_errno) {
     die('Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
+
+// Automatically initialize database schema if tables are missing
+require_once __DIR__ . '/init_db.php';
+initializeDatabase($mysqli, dirname(__DIR__) . '/db/schema.sql');
 ?>
