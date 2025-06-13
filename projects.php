@@ -18,7 +18,7 @@ if (!isset($_SESSION['USER_TYPE']) || ($_SESSION['USER_TYPE'] != 'freelancer' &&
 $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
-$result = $mysqli->query("SELECT `pid`, `name`, `detail`, `cost`, `fid` FROM `post_prj` WHERE `pid` = $pid");
+$result = $mysqli->query("SELECT `id`, `title`, `description`, `budget`, `fid` FROM `project` WHERE `id` = $pid");
 if (!$result->num_rows) {
     exit('No project found.');
 }
@@ -150,7 +150,7 @@ $row = $result->fetch_assoc();
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card border-primary">
                 <div class="card-header bg-primary">
-                    <h3 class="m-0 text-light"><?=ucfirst($row['name'])?></h3>
+<h3 class="m-0 text-light"><?=ucfirst($row['title'])?></h3>
                 </div>
                 <div class="card-body text-left">
                     <div class="form-group">
@@ -172,9 +172,9 @@ $row = $result->fetch_assoc();
                         ?>
                     </div>
                     <h4 class="card-title h5"> Budget de Projet</h4>
-                    <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                    <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['budget']?></p>
                     <h4 class="card-title h5" >Description de Project </h4>
-                    <p class="card-text"name="descriptionInput" id="description" value="<?=ucfirst($row['detail'])?>"><?=ucfirst($row['detail'])?> </p>
+                    <p class="card-text"name="descriptionInput" id="description" value="<?=ucfirst($row['description'])?>"><?=ucfirst($row['description'])?> </p>
                     
                     <!--aji-->
                      
@@ -221,7 +221,7 @@ $row = $result->fetch_assoc();
                              
                     <h4 class="card-title h5">Télécharger le projet terminé</h4>
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/upload.php" method="post" novalidate enctype="multipart/form-data">
-                        <input type="hidden" name="pid" value="<?=$row['pid']?>">
+                        <input type="hidden" name="pid" value="<?=$row['id']?>">
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="prj" class="text-info col-form-label">Téléchargez un seul fichier archivé (par exemple, .rar, .zip) contenant l'ensemble du projet.</label>
@@ -243,7 +243,7 @@ $row = $result->fetch_assoc();
                         } else {
                             ?>
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/placebid.php" method="post" novalidate>
-                        <input type="hidden" name="pid" value="<?=$row['pid']?>">
+                        <input type="hidden" name="pid" value="<?=$row['id']?>">
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <input type="number" id="price" name="price" class="form-control form-control-line" placeholder="Price" required="" value="">
@@ -280,7 +280,7 @@ $row = $result->fetch_assoc();
                         }
                     } else {
                         $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = $pid");
-                        $rs = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
+                        $rs = $mysqli->query("SELECT * FROM `project` WHERE `id` = $pid");
                         $rw = $rs->fetch_assoc();
                         if ($rw['status'] == 'completed') {
                             echo '<p class="card-text"><span class="badge badge-success">Project Completed</span></p>';
@@ -302,7 +302,7 @@ $row = $result->fetch_assoc();
                         } else {
                             ?>
                 <form id="acptForm" action="include/accept.php" method="post" novalidate>
-                    <input type="hidden" name="pid" value="<?=$row['pid']?>">
+                    <input type="hidden" name="pid" value="<?=$row['id']?>">
             <div class="row">
                 <div class="col-12 m-t-30">
                     <p class="text-muted m-t-0"><?=$res->num_rows?> request<?=$res->num_rows > 1 ? 's' : null?></p>
@@ -328,14 +328,14 @@ $row = $result->fetch_assoc();
                             if ($row['fid'] == null || $row['fid'] == 0) {
                                 ?>
                             <button class="btn btn-info card-actions" name="fid" value="<?=$r['fid']?>">Accept & Hire</button>
-                            <a target="_blank" href="users.php?pid=<?=$row['pid']?>&fid=<?=$r['fid']?>&user_id=<?=$ryu['unique_id']?>" style="background-color: blue; color:#fff;"  class="ryu btn btn-sm" data-toggle="tooltip" data-original-title="chat">
+                            <a target="_blank" href="users.php?pid=<?=$row['id']?>&fid=<?=$r['fid']?>&user_id=<?=$ryu['unique_id']?>" style="background-color: blue; color:#fff;"  class="ryu btn btn-sm" data-toggle="tooltip" data-original-title="chat">
                                             <i class="fa fa-chat"></i> chat
                             </a>
                             <?php
                             } elseif ($r['fid'] == $row['fid']) {
                                 ?>
                             <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>">Accepted</button>
-                            <a target="_blank" href="chat.php?pid=<?=$row['pid']?>&fid=<?=$r['fid']?>&user_id=<?=$ryu['unique_id']?>" style="background-color: blue; color:#fff;"  class="ryu btn btn-sm" data-toggle="tooltip" data-original-title="chat">
+                            <a target="_blank" href="chat.php?pid=<?=$row['id']?>&fid=<?=$r['fid']?>&user_id=<?=$ryu['unique_id']?>" style="background-color: blue; color:#fff;"  class="ryu btn btn-sm" data-toggle="tooltip" data-original-title="chat">
                                             <i class="fa fa-chat"></i> chat
                                             
                             </a>
@@ -343,7 +343,7 @@ $row = $result->fetch_assoc();
                             } else {
                                 ?>
                             <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>"> refused </button>
-                            <a target="_blank" href="users.php?pid=<?=$row['pid']?>&fid=<?=$r['fid']?>&user_id=<?=$ryu['unique_id']?>" style="background-color: blue; color:#fff;"  class="ryu btn btn-sm" data-toggle="tooltip" data-original-title="chat">
+                            <a target="_blank" href="users.php?pid=<?=$row['id']?>&fid=<?=$r['fid']?>&user_id=<?=$ryu['unique_id']?>" style="background-color: blue; color:#fff;"  class="ryu btn btn-sm" data-toggle="tooltip" data-original-title="chat">
                                             <i class="fa fa-chat"></i> chat
                             </a>
                             <?php
