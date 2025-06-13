@@ -1,33 +1,24 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Ensure DB connection and session are available
 require_once __DIR__ . '/db.php';
-
+// Retrieve the logged in user name when possible
 $username = '';
-if (isset($_SESSION['USER_ID'], $_SESSION['USER_TYPE'])) {
+if (isset($_SESSION['USER_ID'])) {
     $uid = $_SESSION['USER_ID'];
-    $stmt = $mysqli->prepare('SELECT name FROM users WHERE id=?');
-    if ($stmt) {
-        $stmt->bind_param('i', $uid);
-        $stmt->execute();
-        $res = $stmt->get_result();
-        if ($row = $res->fetch_assoc()) {
-            $username = $row['name'];
+    if (isset($mysqli)) {
+        $stmt = $mysqli->prepare('SELECT name FROM users WHERE id=?');
+        if ($stmt) {
+            $stmt->bind_param('i', $uid);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            if ($row = $res->fetch_assoc()) {
+                $username = $row['name'];
+            }
+            $stmt->close();
         }
-        $stmt->close();
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-    <title><?= isset($site) ? $site : 'Codify' ?></title>
-</head>
-<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/index.php">Codify</a>
   <?php if ($username): ?>
