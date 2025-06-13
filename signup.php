@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 
 require 'include/config.php';
@@ -10,6 +9,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 }
 
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
