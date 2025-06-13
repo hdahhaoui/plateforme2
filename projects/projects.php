@@ -46,9 +46,10 @@ $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req
     <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
    </div>
-   
+
    <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
    <div class="user-name"><?php echo $row3['name']?></div>
+   <a class="logout-link" href="../include/logout.php">Logout</a>
   </div>
  </div>
 
@@ -58,9 +59,9 @@ $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req
   <h1>Dashboard <br> <span> Freelancer</span></h1>  <br>
   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a>Voir Missions déposées</a>
+                      <a href="#missions">Voir Missions déposées</a>
                     </div>
-                   
+
                   </div>
   </div>
   <div class="imageback">
@@ -85,7 +86,7 @@ $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req
      <div class="searched-show">Showing <?php echo $lang?> Jobs</div>
      
     </div>
-    <div class="job-cards projects-list">
+    <div id="missions" class="job-cards projects-list">
     <?php
     while ($row = $result->fetch_assoc()) {
             ?>
