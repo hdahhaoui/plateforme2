@@ -1,7 +1,4 @@
-
-<!DOCTYPE html>
 <?php
-
 require 'include/config.php';
 require 'include/db.php';
 
@@ -15,14 +12,15 @@ if (!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
 }
 
 $cid = $_SESSION['USER_ID'];
-?>
- <?php 
-  if(!isset($_SESSION['unique_id'])){
+
+if (!isset($_SESSION['unique_id'])) {
     header("location: post.php");
-  }
+}
+
+$resultss = $mysqli->query("SELECT * FROM `client` WHERE `cid` = $cid");
+$rowss = $resultss->fetch_assoc();
 ?>
-<?php $resultss = $mysqli->query("SELECT * FROM `client` WHERE `cid` = $cid");
-            $rowss = $resultss->fetch_assoc()?>
+<!DOCTYPE html>
 <html lang="en">
 
   <head>

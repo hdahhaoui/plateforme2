@@ -1,19 +1,17 @@
-<!DOCTYPE html>
 <?php
-
 require 'include/config.php';
 require 'include/db.php';
 
 if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
-   if ($_SESSION['USER_TYPE']== 'client') {
-    header('Location: client.php');
-   } else {
-    header('Location: projects/projects.php');
-   }
-   exit;
+    if ($_SESSION['USER_TYPE'] == 'client') {
+        header('Location: client.php');
+    } else {
+        header('Location: projects/projects.php');
+    }
+    exit;
 }
-
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
