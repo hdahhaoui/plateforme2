@@ -20,9 +20,7 @@ $uid = $_SESSION['USER_ID'];
 $pid = (int) @$_GET['pid'];
 
 
-// Retrieve project details and client name. Some deployments may use
-// either a `name` or `username` field for the user table, so use
-// COALESCE to support both without errors.
+
 $result = $mysqli->query(
     "SELECT p.`id`, p.`title`, p.`description`, p.`budget`, " .
     "COALESCE(u.`name`, u.`username`) AS `client_name` " .
