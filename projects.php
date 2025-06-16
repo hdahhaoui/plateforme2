@@ -20,8 +20,14 @@ $uid = $_SESSION['USER_ID'];
 $pid = (int) @$_GET['pid'];
 
 
-$result = $mysqli->query("SELECT p.`id`, p.`title`, p.`description`, p.`budget`, u.`username` AS `client_name`
-    FROM `projects` p JOIN `users` u ON p.user_id = u.id WHERE p.`id` = $pid");
+// Retrieve project details and client name. Some deployments may use
+// either a `name` or `username` field for the user table, so use
+// COALESCE to support both without errors.
+$result = $mysqli->query(
+    "SELECT p.`id`, p.`title`, p.`description`, p.`budget`, " .
+    "COALESCE(u.`name`, u.`username`) AS `client_name` " .
+    "FROM `projects` p JOIN `users` u ON p.user_id = u.id WHERE p.`id` = $pid"
+);
 
 
 // Determine the hired freelancer for this project, if any
