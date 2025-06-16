@@ -20,7 +20,7 @@ $uid = $_SESSION['USER_ID'];
 $pid = (int) @$_GET['pid'];
 
 
-$result = $mysqli->query("SELECT p.`id`, p.`title`, p.`description`, p.`budget`, u.`username` AS `client_name`
+$result = $mysqli->query("SELECT p.`id`, p.`title`, p.`description`, p.`budget`, u.`name` AS `client_name`
     FROM `projects` p JOIN `users` u ON p.user_id = u.id WHERE p.`id` = $pid");
 
 
