@@ -62,12 +62,14 @@ CREATE TABLE IF NOT EXISTS mssgusers (
 );
 
 CREATE TABLE IF NOT EXISTS messages (
-    msg_id INT AUTO_INCREMENT PRIMARY KEY,
-    incoming_msg_id INT NOT NULL,
-    outgoing_msg_id INT NOT NULL,
-    msg TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (incoming_msg_id) REFERENCES mssgusers(unique_id) ON DELETE CASCADE,
-    FOREIGN KEY (outgoing_msg_id) REFERENCES mssgusers(unique_id) ON DELETE CASCADE
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    project_id INT,
+    sender_id INT NOT NULL,
+    receiver_id INT NOT NULL,
+    content TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE,
+    FOREIGN KEY (sender_id) REFERENCES mssgusers(unique_id) ON DELETE CASCADE,
+    FOREIGN KEY (receiver_id) REFERENCES mssgusers(unique_id) ON DELETE CASCADE
 );
 
