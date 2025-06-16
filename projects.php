@@ -20,10 +20,14 @@ $uid = $_SESSION['USER_ID'];
 $pid = (int) @$_GET['pid'];
 
 
-
+// Retrieve project details and client name. Some installations might
+// have either a `name` or a `username` column in the `users` table.
+// Check which one exists to avoid SQL errors with missing columns.
+$columnCheck = $mysqli->query("SHOW COLUMNS FROM `users` LIKE 'name'");
+$userNameField = ($columnCheck && $columnCheck->num_rows) ? 'name' : 'username';
 $result = $mysqli->query(
     "SELECT p.`id`, p.`title`, p.`description`, p.`budget`, " .
-    "COALESCE(u.`name`, u.`username`) AS `client_name` " .
+    "u.`$userNameField` AS `client_name` " .
     "FROM `projects` p JOIN `users` u ON p.user_id = u.id WHERE p.`id` = $pid"
 );
 
