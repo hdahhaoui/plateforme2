@@ -12,16 +12,19 @@ if (!$pid) {
     exit('Project ID missing.');
 }
 
-$stmt = $mysqli->prepare(
-    "SELECT p.id, p.user_id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at,
-            COALESCE(u.name, u.username) AS client_name, u.email AS client_email,
+$colCheck = $mysqli->query("SHOW COLUMNS FROM users LIKE 'username'");
+$nameExpr = ($colCheck && $colCheck->num_rows > 0)
+    ? 'COALESCE(u.name, u.username)'
+    : 'u.name';
+$query = "SELECT p.id, p.user_id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at,
+            $nameExpr AS client_name, u.email AS client_email,
             u.profile_img, u.created_at AS user_created,
             c.address, c.phone
-     FROM projects p
-     JOIN users u ON p.user_id = u.id
-     LEFT JOIN client c ON u.id = c.cid
-     WHERE p.id = ?"
-);
+          FROM projects p
+          JOIN users u ON p.user_id = u.id
+          LEFT JOIN client c ON u.id = c.cid
+          WHERE p.id = ?";
+$stmt = $mysqli->prepare($query);
 $stmt->bind_param('i', $pid);
 $stmt->execute();
 $result = $stmt->get_result();
