@@ -11,6 +11,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt) {
         $stmt->bind_param('ssss', $name, $email, $password, $type);
         $stmt->execute();
+        $uid = $mysqli->insert_id;
+        if ($type === 'client') {
+            $sec     = trim($_POST['sec'] ?? '');
+            $serv    = trim($_POST['serv'] ?? '');
+            $address = trim($_POST['address'] ?? '');
+            $phone   = trim($_POST['phone'] ?? '');
+            $cstmt = $mysqli->prepare('INSERT INTO client (cid, sec, serv, address, phone) VALUES (?,?,?,?,?)');
+            if ($cstmt) {
+                $cstmt->bind_param('issss', $uid, $sec, $serv, $address, $phone);
+                $cstmt->execute();
+            }
+        }
     }
     $_SESSION['msg'] = ['type' => 'success', 'msg' => 'Account created'];
     header('Location: ../login.php');
