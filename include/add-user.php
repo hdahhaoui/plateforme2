@@ -65,17 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
         $uid = $mysqli->insert_id;
 
-        // create messaging user profile
-        if ($type === 'client') {
-            $msgStmt = $mysqli->prepare('INSERT INTO mssgusers (cid, name, img) VALUES (?,?,?)');
-        } else {
-            $msgStmt = $mysqli->prepare('INSERT INTO mssgusers (fid, name, img) VALUES (?,?,?)');
-        }
-        if ($msgStmt) {
-            $msgStmt->bind_param('iss', $uid, $name, $imgName);
-            $msgStmt->execute();
-        }
-
         if ($type === 'client') {
             $sec  = trim($_POST['sec'] ?? '');
             $serv = trim($_POST['serv'] ?? '');
@@ -96,6 +85,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $cstmt->execute();
                 }
             }
+        } else {
+            $domain = trim($_POST['domaine'] ?? '');
+            $fstmt = $mysqli->prepare('INSERT INTO freelancer (fid, name, lang) VALUES (?,?,?)');
+            if ($fstmt) {
+                $fstmt->bind_param('iss', $uid, $name, $domain);
+                $fstmt->execute();
+            }
+        }
+
+        // create messaging user profile after related table entry exists
+        if ($type === 'client') {
+            $msgStmt = $mysqli->prepare('INSERT INTO mssgusers (cid, name, img) VALUES (?,?,?)');
+        } else {
+            $msgStmt = $mysqli->prepare('INSERT INTO mssgusers (fid, name, img) VALUES (?,?,?)');
+        }
+        if ($msgStmt) {
+            $msgStmt->bind_param('iss', $uid, $name, $imgName);
+            $msgStmt->execute();
         }
     }
     $_SESSION['msg'] = ['type' => 'success', 'msg' => 'Account created'];
