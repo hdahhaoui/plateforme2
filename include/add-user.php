@@ -7,7 +7,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = password_hash($_POST['password'] ?? '', PASSWORD_BCRYPT);
     $type = $_POST['usertype'] ?? 'client';
 
-    $stmt = $mysqli->prepare('INSERT INTO users (name,email,password,type) VALUES (?,?,?,?)');
+    // Determine if the `users` table uses the column `name` or `username` for the
+    // user's display name. Some deployments still contain a legacy `username`
+    // field which triggers a SQL error when `name` is used.
+    $nameColumn = 'name';
+    $colCheck = $mysqli->query("SHOW COLUMNS FROM users LIKE 'name'");
+    if (!$colCheck || $colCheck->num_rows === 0) {
+        $nameColumn = 'username';
+    }
+
+    $stmt = $mysqli->prepare("INSERT INTO users (`$nameColumn`, email, password, type) VALUES (?,?,?,?)");
     if ($stmt) {
         $stmt->bind_param('ssss', $name, $email, $password, $type);
         $stmt->execute();
