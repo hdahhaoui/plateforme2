@@ -13,7 +13,7 @@ if (!$pid) {
 }
 
 $stmt = $mysqli->prepare(
-    "SELECT p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at, u.username AS client_name, u.email AS client_email
+    "SELECT p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at, p.file, u.username AS client_name, u.email AS client_email
      FROM projects p JOIN users u ON p.user_id = u.id WHERE p.id = ?"
 );
 $stmt->bind_param('i', $pid);
@@ -23,6 +23,11 @@ if (!$result->num_rows) {
     exit('Project not found.');
 }
 $row = $result->fetch_assoc();
+
+$favStmt = $mysqli->prepare('SELECT id FROM favorites WHERE user_id=? AND project_id=?');
+$favStmt->bind_param('ii', $_SESSION['USER_ID'], $pid);
+$favStmt->execute();
+$isFavorite = $favStmt->get_result()->num_rows > 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +54,31 @@ $row = $result->fetch_assoc();
         <span>Status: <?= htmlspecialchars($row['status']) ?></span>
         <span>Posted on: <?= htmlspecialchars($row['created_at']) ?></span>
     </div>
+</div>
+<div class="container">
     <div class="project-description"><?= htmlspecialchars($row['description']) ?></div>
+    <?php if (!empty($row['file']) && file_exists($row['file'])): ?>
+        <p><a href="<?= htmlspecialchars($row['file']) ?>" download>Download attached file</a></p>
+    <?php endif; ?>
+
+    <form method="post" action="include/favorite.php" style="margin-bottom:15px;">
+        <input type="hidden" name="pid" value="<?= $pid ?>">
+        <button type="submit"><?= $isFavorite ? 'Unwatch' : 'Add to favorites' ?></button>
+    </form>
+
+    <form method="post" action="include/placebid.php">
+        <input type="hidden" name="pid" value="<?= $pid ?>">
+        <input type="hidden" name="price" value="0">
+        <div>
+            <label>Duration (days): <input type="number" name="duration" required></label>
+        </div>
+        <div>
+            <label>Message (optional):<br>
+                <textarea name="msg" rows="4" cols="50"></textarea>
+            </label>
+        </div>
+        <button type="submit">Submit Proposal</button>
+    </form>
 </div>
 </body>
 </html>

@@ -7,7 +7,8 @@ function initializeDatabase(mysqli $mysqli, string $schemaPath): void {
         'projects',
         'post_req',
         'mssgusers',
-        'messages'
+        'messages',
+        'favorites'
     ];
 
     $missing = false;
