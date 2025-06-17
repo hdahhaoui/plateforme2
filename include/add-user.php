@@ -26,10 +26,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $serv    = trim($_POST['serv'] ?? '');
             $address = trim($_POST['address'] ?? '');
             $phone   = trim($_POST['phone'] ?? '');
-            $cstmt = $mysqli->prepare('INSERT INTO client (cid, sec, serv, address, phone) VALUES (?,?,?,?,?)');
-            if ($cstmt) {
-                $cstmt->bind_param('issss', $uid, $sec, $serv, $address, $phone);
-                $cstmt->execute();
+
+            // Check if the `client` table contains an `address` column.
+            $addrCol = $mysqli->query("SHOW COLUMNS FROM client LIKE 'address'");
+
+            if ($addrCol && $addrCol->num_rows > 0) {
+                $cstmt = $mysqli->prepare('INSERT INTO client (cid, sec, serv, address, phone) VALUES (?,?,?,?,?)');
+                if ($cstmt) {
+                    $cstmt->bind_param('issss', $uid, $sec, $serv, $address, $phone);
+                    $cstmt->execute();
+                }
+            } else {
+                $cstmt = $mysqli->prepare('INSERT INTO client (cid, sec, serv, phone) VALUES (?,?,?,?)');
+                if ($cstmt) {
+                    $cstmt->bind_param('isss', $uid, $sec, $serv, $phone);
+                    $cstmt->execute();
+                }
             }
         }
     }
