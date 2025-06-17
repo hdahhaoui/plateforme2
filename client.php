@@ -122,6 +122,8 @@ $row8 = $result8->fetch_assoc();?>
                 <div class="item header-text">
 
                   <h2>Dashboard <br><em>Client</em></h2> <br> <br>
+                  <p>Adresse: <?= htmlspecialchars($rowss['address'] ?? '') ?><br>
+                  Téléphone: <?= htmlspecialchars($rowss['phone'] ?? '') ?></p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
                       <a href="#services">Voir Missions </a>

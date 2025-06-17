@@ -13,8 +13,13 @@ if (!$pid) {
 }
 
 $stmt = $mysqli->prepare(
-    "SELECT p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at, u.username AS client_name, u.email AS client_email
-     FROM projects p JOIN users u ON p.user_id = u.id WHERE p.id = ?"
+    "SELECT p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at,
+            u.username AS client_name, u.email AS client_email,
+            c.address, c.phone
+     FROM projects p
+     JOIN users u ON p.user_id = u.id
+     LEFT JOIN client c ON u.id = c.cid
+     WHERE p.id = ?"
 );
 $stmt->bind_param('i', $pid);
 $stmt->execute();
@@ -40,6 +45,7 @@ $row = $result->fetch_assoc();
     </style>
 </head>
 <body>
+<?php require 'include/header.php'; ?>
 <div class="container">
     <h1 class="project-title"><?= htmlspecialchars($row['title']) ?></h1>
     <div class="project-meta">
@@ -49,7 +55,18 @@ $row = $result->fetch_assoc();
         <span>Status: <?= htmlspecialchars($row['status']) ?></span>
         <span>Posted on: <?= htmlspecialchars($row['created_at']) ?></span>
     </div>
+    <button id="contactBtn">Voir les coordonnées du client</button>
+    <div id="contactInfo" style="display:none; margin-top:10px;">
+        <p>Adresse: <?= htmlspecialchars($row['address'] ?? '') ?></p>
+        <p>Téléphone: <?= htmlspecialchars($row['phone'] ?? '') ?></p>
+    </div>
     <div class="project-description"><?= htmlspecialchars($row['description']) ?></div>
 </div>
+<script>
+document.getElementById('contactBtn').addEventListener('click', function(){
+    var info = document.getElementById('contactInfo');
+    info.style.display = info.style.display === 'none' ? 'block' : 'none';
+});
+</script>
 </body>
 </html>

@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS client (
     cid INT PRIMARY KEY,
     sec VARCHAR(100),
     serv VARCHAR(100),
+    address VARCHAR(255),
+    phone VARCHAR(20),
     FOREIGN KEY (cid) REFERENCES users(id) ON DELETE CASCADE
 );
 

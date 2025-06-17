@@ -156,12 +156,18 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                          </select>
                                          <br>
 
-                                        
-                                        
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
+                                     </div> <br> <br>
+                                     <div class="q-box__question">
+                                         <label class="" for="address">Adresse :</label> <br>
+                                         <input required class="" id="address" name="address" type="text">
+                                     </div> <br> <br>
+                                     <div class="q-box__question">
+                                         <label class="" for="phone">Numéro de téléphone :</label> <br>
+                                         <input required class="" id="phone" name="phone" type="text">
+                                     </div>
+                                     </div>
+                                 </div>
+                                 </div>
                             
                         </div>
                         <div id="q-box__buttons">
