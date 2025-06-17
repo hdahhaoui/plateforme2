@@ -43,6 +43,7 @@ $row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
     <div class="user-settings">
         <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
         <div class="user-name"><?php echo $row3['name'] ?? '' ?></div>
+        <a style="margin-right:10px;" href="../profile.php?uid=<?=$fid?>">Profil</a>
         <a class="logout-link" href="../include/logout.php">Logout</a>
     </div>
 </header>

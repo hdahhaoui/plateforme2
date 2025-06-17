@@ -13,8 +13,9 @@ if (!$pid) {
 }
 
 $stmt = $mysqli->prepare(
-    "SELECT p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at,
-            u.username AS client_name, u.email AS client_email,
+    "SELECT p.id, p.user_id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at,
+            COALESCE(u.name, u.username) AS client_name, u.email AS client_email,
+            u.profile_img, u.created_at AS user_created,
             c.address, c.phone
      FROM projects p
      JOIN users u ON p.user_id = u.id
@@ -28,6 +29,14 @@ if (!$result->num_rows) {
     exit('Project not found.');
 }
 $row = $result->fetch_assoc();
+
+// count number of projects posted by the client
+$countStmt = $mysqli->prepare('SELECT COUNT(*) FROM projects WHERE user_id = ?');
+$countStmt->bind_param('i', $row['user_id']);
+$countStmt->execute();
+$countStmt->bind_result($clientProjects);
+$countStmt->fetch();
+$countStmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,11 +58,19 @@ $row = $result->fetch_assoc();
 <div class="container">
     <h1 class="project-title"><?= htmlspecialchars($row['title']) ?></h1>
     <div class="project-meta">
-        <span>Client: <?= htmlspecialchars($row['client_name']) ?> (<?= htmlspecialchars($row['client_email']) ?>)</span>
+        <span>
+            Client: <a href="profile.php?uid=<?= $row['user_id'] ?>"><?= htmlspecialchars($row['client_name']) ?></a>
+            (<?= htmlspecialchars($row['client_email']) ?>)
+        </span>
+        <?php if (!empty($row['profile_img'])): ?>
+            <img src="php/images/<?= htmlspecialchars($row['profile_img']) ?>" alt="profile" style="width:50px;height:50px;border-radius:50%;">
+        <?php endif; ?>
         <span>Budget: $<?= htmlspecialchars($row['budget']) ?></span>
         <span>Deadline: <?= htmlspecialchars($row['deadline']) ?></span>
         <span>Status: <?= htmlspecialchars($row['status']) ?></span>
         <span>Posted on: <?= htmlspecialchars($row['created_at']) ?></span>
+        <span>Member since: <?= htmlspecialchars($row['user_created']) ?></span>
+        <span>Projects posted: <?= $clientProjects ?></span>
     </div>
     <button id="contactBtn">Voir les coordonnées du client</button>
     <div id="contactInfo" style="display:none; margin-top:10px;">
