@@ -5,7 +5,11 @@ CREATE TABLE IF NOT EXISTS users (
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    type VARCHAR(20) NOT NULL DEFAULT 'client'
+    type VARCHAR(20) NOT NULL DEFAULT 'client',
+    phone VARCHAR(20),
+    address VARCHAR(255),
+    profile_img VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS client (
