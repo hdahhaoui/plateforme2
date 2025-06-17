@@ -26,8 +26,9 @@ $pid = (int) @$_GET['pid'];
 $columnCheck = $mysqli->query("SHOW COLUMNS FROM `users` LIKE 'name'");
 $userNameField = ($columnCheck && $columnCheck->num_rows) ? 'name' : 'username';
 $result = $mysqli->query(
-    "SELECT p.`id`, p.`title`, p.`description`, p.`budget`, " .
-    "u.`$userNameField` AS `client_name` " .
+    "SELECT p.`id`, p.`title`, p.`description`, p.`budget`, p.`deadline`, " .
+    "DATEDIFF(p.`deadline`, p.`created_at`) AS `project_duration`, " .
+    "u.`$userNameField` AS `client_name`, u.`email` AS `client_email` " .
     "FROM `projects` p JOIN `users` u ON p.user_id = u.id WHERE p.`id` = $pid"
 );
 
@@ -170,7 +171,15 @@ $row['fid'] = $hired_fid;
             <div class="sinup-box card border-primary">
                 <div class="card-header bg-primary">
 <h3 class="m-0 text-light"><?=ucfirst($row['title'] ?? '')?></h3>
-<small class="text-light">Client: <?=ucfirst($row['client_name'] ?? '')?></small>
+<small class="text-light">
+    Client: <?=ucfirst($row['client_name'] ?? '')?>
+    <?php if (!empty($row['client_email'])): ?>
+        (<?=htmlspecialchars($row['client_email'])?>)
+    <?php endif; ?>
+</small>
+<?php if (!empty($row['project_duration'])): ?>
+    <div class="text-light">Durée du projet: <?= (int) $row['project_duration'] ?> jours</div>
+<?php endif; ?>
 
                 </div>
                 <div class="card-body text-left">
