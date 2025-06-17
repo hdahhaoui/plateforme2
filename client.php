@@ -91,7 +91,8 @@ $row8 = $result8->fetch_assoc();?>
               <li class="scroll-to-section"><a href="#top" class="active"></a></li>
 <li class="scroll-to-section">      <img class="user-profile" src="php/images/<?php echo $row8['img']?>" alt=""></li>
               <li class="scroll-to-section"><a href="#video"></a></li> 
-              <li class="scroll-to-section"><a href="#contact"><?php echo $rowss['name'] ?></a></li> 
+              <li class="scroll-to-section"><a href="profile.php?uid=<?=$cid?>">Profil</a></li>
+              <li class="scroll-to-section"><a href="#contact"><?php echo $rowss['name'] ?></a></li>
               <li class="scroll-to-section"><div class="main-red-button-hover"><a href="include/logout.php">Logout</a></div></li> 
             </ul>
             <a class='menu-trigger'>
