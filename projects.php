@@ -12,10 +12,17 @@ if (!$pid) {
     exit('Project ID missing.');
 }
 
-$stmt = $mysqli->prepare(
-    "SELECT p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at, p.file, u.username AS client_name, u.email AS client_email
-     FROM projects p JOIN users u ON p.user_id = u.id WHERE p.id = ?"
-);
+$colRes = $mysqli->query("SHOW COLUMNS FROM projects LIKE 'file'");
+$hasFile = $colRes && $colRes->num_rows > 0;
+
+$selectFields = "p.id, p.title, p.description, p.budget, p.deadline, p.status, p.created_at";
+if ($hasFile) {
+    $selectFields .= ", p.file";
+}
+$selectFields .= ", u.username AS client_name, u.email AS client_email";
+
+$query = "SELECT $selectFields FROM projects p JOIN users u ON p.user_id = u.id WHERE p.id = ?";
+$stmt = $mysqli->prepare($query);
 $stmt->bind_param('i', $pid);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -57,8 +64,8 @@ $isFavorite = $favStmt->get_result()->num_rows > 0;
 </div>
 <div class="container">
     <div class="project-description"><?= htmlspecialchars($row['description']) ?></div>
-    <?php if (!empty($row['file']) && file_exists($row['file'])): ?>
-        <p><a href="<?= htmlspecialchars($row['file']) ?>" download>Download attached file</a></p>
+    <?php if ($hasFile && !empty($row["file"]) && file_exists($row["file"])): ?>
+        <p><a href="<?= htmlspecialchars($row["file"]) ?>" download>Download attached file</a></p>
     <?php endif; ?>
 
     <form method="post" action="include/favorite.php" style="margin-bottom:15px;">
