@@ -7,9 +7,10 @@ if (!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
     exit;
 }
 
-$pid = (int) ($_GET['pid'] ?? 0);
+$pidParam = $_GET['pid'] ?? '';
+$pid = filter_var($pidParam, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
 if (!$pid) {
-    exit('Project ID missing.');
+    exit('Project ID missing or invalid.');
 }
 
 $colCheck = $mysqli->query("SHOW COLUMNS FROM users LIKE 'username'");
