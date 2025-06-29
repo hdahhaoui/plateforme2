@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
-    if ($status !== null && in_array($status, ['open','in progress','completed'], true)) {
+    if ($status !== null && in_array($status, ['open','in progress','closed','completed'], true)) {
         $stmt = $mysqli->prepare('UPDATE projects SET title=?, description=?, budget=?, deadline=?, status=? WHERE id=?');
         if ($stmt) {
             $stmt->bind_param('ssdssi', $title, $desc, $budget, $deadline, $status, $pid);
