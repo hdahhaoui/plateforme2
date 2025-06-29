@@ -206,7 +206,7 @@ if (empty($_GET['pid'])) {
                                 <input type="hidden" name="pid" value="<?= $p['id'] ?>">
                                 <select name="status" class="form-control form-control-sm mr-2">
                                     <option value="open" <?= $p['status']==='open'?'selected':'' ?>>open</option>
-                                    <option value="closed" <?= $p['status']==='closed'?'selected':'' ?>>closed</option>
+                                    <option value="in progress" <?= $p['status']==='in progress'?'selected':'' ?>>in progress</option>
                                     <option value="completed" <?= $p['status']==='completed'?'selected':'' ?>>completed</option>
                                 </select>
                                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
