@@ -6,7 +6,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title  = trim($_POST['name'] ?? '');
     $desc   = trim($_POST['about'] ?? '');
     $budget = floatval($_POST['cost'] ?? 0);
-    $deadline = $_POST['deadline'] ?? null;
+    if (!empty($_POST['deadline'])) {
+        $ts = strtotime($_POST['deadline']);
+        $deadline = $ts ? date('Y-m-d', $ts) : null;
+    } else {
+        $deadline = null;
+    }
 
 
     $stmt = $mysqli->prepare('UPDATE projects SET title=?, description=?, budget=?, deadline=? WHERE id=?');
