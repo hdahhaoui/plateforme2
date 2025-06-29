@@ -16,6 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-header('Location: ../post.php');
+$redirect = '../post.php';
+if (!empty($pid)) {
+    $redirect .= '?pid=' . $pid;
+}
+
+header('Location: ' . $redirect);
 exit;
 ?>

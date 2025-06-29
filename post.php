@@ -149,6 +149,18 @@ if (empty($_GET['pid'])) {
                                 </div>
                             </div>
                         </div>
+<?php if ($pid): ?>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label for="status" class="text-info">Project status</label>
+                                <select id="status" name="status" class="form-control form-control-line">
+                                    <option value="open" <?= @$row['status']==='open'?'selected':'' ?>>open</option>
+                                    <option value="in progress" <?= @$row['status']==='in progress'?'selected':'' ?>>in progress</option>
+                                    <option value="completed" <?= @$row['status']==='completed'?'selected':'' ?>>completed</option>
+                                </select>
+                            </div>
+                        </div>
+<?php endif; ?>
                         <!--div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">How long would you like to run your contest?</label>
