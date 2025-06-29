@@ -6,12 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title  = trim($_POST['name'] ?? '');
     $desc   = trim($_POST['about'] ?? '');
     $budget = floatval($_POST['cost'] ?? 0);
+    $deadline = $_POST['deadline'] ?? null;
 
 
-    $stmt = $mysqli->prepare('UPDATE projects SET title=?, description=?, budget=? WHERE id=?');
+    $stmt = $mysqli->prepare('UPDATE projects SET title=?, description=?, budget=?, deadline=? WHERE id=?');
 
     if ($stmt) {
-        $stmt->bind_param('ssdi', $title, $desc, $budget, $pid);
+        $stmt->bind_param('ssdsi', $title, $desc, $budget, $deadline, $pid);
         $stmt->execute();
     }
 

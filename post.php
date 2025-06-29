@@ -140,6 +140,15 @@ if (empty($_GET['pid'])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label for="deadline" class="text-info">Project deadline</label>
+                                <input type="date" id="deadline" name="deadline" class="form-control form-control-line" required value="<?=@$row['deadline']?>">
+                                <div class="invalid-feedback help text-left">
+                                    Please provide a project deadline.
+                                </div>
+                            </div>
+                        </div>
                         <!--div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">How long would you like to run your contest?</label>
@@ -165,6 +174,51 @@ if (empty($_GET['pid'])) {
                     </form>
                 </div>
             </div>
+
+            <?php
+            $uid = $_SESSION['USER_ID'];
+            $stmt = $mysqli->prepare('SELECT id,title,budget,deadline,status FROM projects WHERE user_id=? ORDER BY created_at DESC');
+            if ($stmt) {
+                $stmt->bind_param('i', $uid);
+                $stmt->execute();
+                $projects = $stmt->get_result();
+            }
+            ?>
+            <h4 class="mt-5">My Projects</h4>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Budget</th>
+                        <th>Deadline</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if (isset($projects)): while ($p = $projects->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($p['title']) ?></td>
+                        <td><?= htmlspecialchars($p['budget']) ?></td>
+                        <td><?= htmlspecialchars($p['deadline']) ?></td>
+                        <td>
+                            <form method="post" action="include/update-status.php" class="form-inline">
+                                <input type="hidden" name="pid" value="<?= $p['id'] ?>">
+                                <select name="status" class="form-control form-control-sm mr-2">
+                                    <option value="open" <?= $p['status']==='open'?'selected':'' ?>>open</option>
+                                    <option value="closed" <?= $p['status']==='closed'?'selected':'' ?>>closed</option>
+                                    <option value="completed" <?= $p['status']==='completed'?'selected':'' ?>>completed</option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                            </form>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-secondary" href="post.php?pid=<?= $p['id'] ?>">Edit</a>
+                        </td>
+                    </tr>
+                <?php endwhile; endif; ?>
+                </tbody>
+            </table>
         </div>
     </header>
 

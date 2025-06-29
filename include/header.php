@@ -1,8 +1,9 @@
 <?php
 // Ensure DB connection and session are available
 require_once __DIR__ . '/db.php';
-// Retrieve the logged in user name when possible
+// Retrieve the logged in user name and profile picture when possible
 $username = '';
+$profileImg = '';
 if (isset($_SESSION['USER_ID'])) {
     $uid = $_SESSION['USER_ID'];
     if (isset($mysqli)) {
@@ -17,6 +18,7 @@ if (isset($_SESSION['USER_ID'])) {
                 } elseif (isset($row['username'])) {
                     $username = $row['username'];
                 }
+                $profileImg = $row['profile_img'] ?? '';
             }
             $stmt->close();
         }
@@ -27,6 +29,9 @@ if (isset($_SESSION['USER_ID'])) {
   <a class="navbar-brand" href="/index.php">Codify</a>
   <?php if ($username): ?>
   <div class="ml-auto d-flex align-items-center">
+    <?php if ($profileImg): ?>
+        <img src="php/images/<?= htmlspecialchars($profileImg) ?>" alt="profile" style="width:32px;height:32px;border-radius:50%;margin-right:10px;">
+    <?php endif; ?>
     <span class="navbar-text mr-3"><?php echo htmlspecialchars($username); ?></span>
     <a class="btn btn-outline-danger btn-sm" href="include/logout.php">Logout</a>
   </div>

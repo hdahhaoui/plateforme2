@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title      = trim($_POST['name'] ?? '');
     $desc       = trim($_POST['about'] ?? '');
     $budget     = floatval($_POST['cost'] ?? 0);
+    $deadline   = $_POST['deadline'] ?? null;
 
     // Ensure the projects table exists in case the SQL schema has not been imported
 
@@ -24,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mysqli->query($createQuery);
 
 
-    $stmt = $mysqli->prepare('INSERT INTO projects (user_id, title, description, budget, status) VALUES (?,?,?,?,\'open\')');
+    $stmt = $mysqli->prepare('INSERT INTO projects (user_id, title, description, budget, deadline, status) VALUES (?,?,?,?,?,\'open\')');
 
     if ($stmt) {
-        $stmt->bind_param('issd', $uid, $title, $desc, $budget);
+        $stmt->bind_param('issds', $uid, $title, $desc, $budget, $deadline);
         $stmt->execute();
         $newId = $mysqli->insert_id;
     }
