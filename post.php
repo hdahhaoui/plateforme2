@@ -11,17 +11,27 @@ if (!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
     header('Location: login.php');
     exit;
 }
-if (empty($_GET['pid'])) {
-    $pid = 0;
-} else {
-    $pid = $_GET['pid'];
-
-    $result = $mysqli->query("SELECT * FROM `projects` WHERE `id` = $pid");
-
-    if ($result && $result->num_rows) {
-        $row = $result->fetch_assoc();
-    } else {
-        $pid = 0;
+$pid = isset($_GET['pid']) ? intval($_GET['pid']) : 0;
+$row = [
+    'title'       => '',
+    'description' => '',
+    'budget'      => '',
+    'deadline'    => '',
+    'status'      => 'open',
+    'category'    => '',
+    'lang'        => ''
+];
+if ($pid) {
+    $stmt = $mysqli->prepare('SELECT * FROM projects WHERE id=?');
+    if ($stmt) {
+        $stmt->bind_param('i', $pid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result && $result->num_rows) {
+            $row = $result->fetch_assoc();
+        } else {
+            $pid = 0;
+        }
     }
 }
 ?>
@@ -91,7 +101,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="name" class="text-info">Choose a name for your project</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="<?=@$row['title']?>">
+                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="<?=htmlspecialchars($row['title'])?>">
                                 <div class="invalid-feedback help text-left">
                                     Please enter name of project.
                                 </div>
@@ -116,7 +126,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="about" class="text-info">Tell us more about your project</label>
-                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required value="" rows="3"><?=@$row['description']?></textarea>
+                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required rows="3"><?=htmlspecialchars($row['description'])?></textarea>
                                 <div class="invalid-feedback help text-left">
                                     Please enter description of project.
                                 </div>
@@ -125,7 +135,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="lang" class="text-info">What skills are required?</label>
-                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langauge or Skill" required="" value="<?=@$row['lang']?>">
+                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langauge or Skill" required="" value="<?=htmlspecialchars($row['lang'])?>">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your langauge or skill.
                                 </div>
@@ -134,7 +144,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">What is your budget?</label>
-                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="<?=@$row['budget']?>" min="600" max="100000">
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="<?=htmlspecialchars($row['budget'])?>" min="600" max="100000">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your project budget.
                                 </div>
@@ -143,7 +153,7 @@ if (empty($_GET['pid'])) {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="deadline" class="text-info">Project deadline</label>
-                                <input type="date" id="deadline" name="deadline" class="form-control form-control-line" required value="<?=@$row['deadline']?>">
+                                <input type="date" id="deadline" name="deadline" class="form-control form-control-line" required value="<?=htmlspecialchars($row['deadline'])?>">
                                 <div class="invalid-feedback help text-left">
                                     Please provide a project deadline.
                                 </div>
