@@ -156,7 +156,8 @@ if (empty($_GET['pid'])) {
                                 <select id="status" name="status" class="form-control form-control-line">
                                     <option value="open" <?= @$row['status']==='open'?'selected':'' ?>>open</option>
                                     <option value="in progress" <?= @$row['status']==='in progress'?'selected':'' ?>>in progress</option>
-                                    <option value="completed" <?= @$row['status']==='completed'?'selected':'' ?>>completed</option>
+                                    <option value="closed" <?= @$row['status']=='closed'?'selected':'' ?>>closed</option>
+                                    <option value="completed" <?= @$row['status']=='completed'?'selected':'' ?>>completed</option>
                                 </select>
                             </div>
                         </div>
@@ -217,9 +218,10 @@ if (empty($_GET['pid'])) {
                             <form method="post" action="include/update-status.php" class="form-inline">
                                 <input type="hidden" name="pid" value="<?= $p['id'] ?>">
                                 <select name="status" class="form-control form-control-sm mr-2">
-                                    <option value="open" <?= $p['status']==='open'?'selected':'' ?>>open</option>
-                                    <option value="in progress" <?= $p['status']==='in progress'?'selected':'' ?>>in progress</option>
-                                    <option value="completed" <?= $p['status']==='completed'?'selected':'' ?>>completed</option>
+                                                                        <option value="open" <?= $p["status"]=="open"?"selected":"" ?>>open</option>
+                                                                        <option value="in progress" <?= $p["status"]=="in progress"?"selected":"" ?>>in progress</option>
+                                    <option value="closed" <?= $p["status"]=="closed"?"selected":"" ?>>closed</option>
+                                                                        <option value="completed" <?= $p["status"]=="completed"?"selected":"" ?>>completed</option>
                                 </select>
                                 <button type="submit" class="btn btn-sm btn-primary">Update</button>
                             </form>
