@@ -1,18 +1,17 @@
 # Codify
 
-Bienvenue dans la documentation du projet de fin d'études réalisé pour l'obtention du DUT en 2022. Ce projet consiste en une plateforme de services freelance, offrant une interface pour les clients et les freelancers afin de faciliter la collaboration et la réalisation de divers projets.
+Bienvenue dans la documentation du projet de fin d'études réalisé pour l'obtention du DUT en 2022. Le projet a d'abord été pensé comme une plateforme de services freelance et a évolué pour devenir un outil de collaboration entre le département de génie civil et ses partenaires socioéconomiques. Il permet désormais de rapprocher les enseignants‑chercheurs et les entreprises autour de projets communs.
 
 ## Description du Projet
-Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouver des freelancers pour divers besoins, tels que le développement web, le design graphique, la rédaction, etc. Les freelancers peuvent créer des profils détaillés présentant leurs compétences, leur expérience et leurs tarifs, tandis que les clients peuvent publier des projets et engager des freelancers pour les réaliser.
+La plateforme facilite la mise en relation entre les enseignants‑chercheurs du département de génie civil et les entreprises ou organismes souhaitant collaborer. Les enseignants renseignent leurs spécialités (structures, géotechnique, transport, etc.), tandis que les partenaires publient leurs besoins ou projets en génie civil afin de trouver les compétences adaptées.
 
 ## Fonctionnalités Principales
 
-- **Inscription et Profilage**: Les utilisateurs peuvent s'inscrire en tant que client ou freelancer et compléter leurs profils avec des informations pertinentes.
-- **Publication de Projets**: Les clients peuvent publier des descriptions détaillées de leurs projets, y compris les exigences, les délais et les budgets.
-- **Recherche et Filtrage**: Les utilisateurs peuvent rechercher des freelancers en fonction de critères spécifiques tels que les compétences, les avis clients et les tarifs.
-- **Messagerie Intégrée**: Une messagerie interne permet aux clients et aux freelancers de communiquer facilement pour discuter des détails du projet.
-- **Gestion des Projets**: Les clients peuvent suivre l'avancement de leurs projets, échanger des fichiers et valider les livrables.
-- **Système de Paiement**: Intégration d'un système de paiement sécurisé pour faciliter les transactions entre les clients et les freelancers.
+- **Inscription et Profilage**: Les utilisateurs s'enregistrent en tant que partenaire ou enseignant‑chercheur et complètent leurs profils avec les informations nécessaires.
+- **Publication de Projets**: Les partenaires décrivent leurs besoins en génie civil en précisant les compétences recherchées, les délais et le budget.
+- **Recherche et Filtrage**: Les partenaires peuvent filtrer les enseignants‑chercheurs selon leurs spécialités et leurs réalisations.
+- **Messagerie Intégrée**: Une messagerie interne facilite les échanges entre partenaires et enseignants‑chercheurs.
+- **Gestion des Projets**: Les partenaires suivent l'avancement de leurs projets et partagent les documents utiles.
 
 ## Installation et Configuration
 
@@ -49,17 +48,17 @@ Ce projet vise à créer une plateforme web permettant aux utilisateurs de trouv
 
     ## Screenshots de l'application
 
-    ### Page d'atterrissage côté Client
+    ### Page d'atterrissage côté Partenaire
     <img width="960" alt="client" src="https://github.com/hemza1/freelancing_platform/assets/47822519/30dfcbf4-8e9c-4d3c-9e38-a51f719c552c">
     
-    ### Page d'atterrissage côté Freelancer
+    ### Page d'atterrissage côté Enseignant‑Chercheur
     <img width="949" alt="freelancer" src="https://github.com/hemza1/freelancing_platform/assets/47822519/90782012-d5d1-450b-a916-70c6463ec739">
     
-    ### Liste des projets à postuler pour le freelancer
+    ### Liste des projets destinés à l'enseignant‑chercheur
     <img width="663" alt="login2" src="https://github.com/hemza1/freelancing_platform/assets/47822519/94db52f3-5b8c-4e2b-a385-89911368d487">
     <img width="660" alt="login" src="https://github.com/hemza1/freelancing_platform/assets/47822519/f4bc7007-3ce4-47bc-b142-6e4b427ea4ec">
     
-    ### Création de projet pour le client
+    ### Création de projet pour le partenaire
     <img width="474" alt="projet" src="https://github.com/hemza1/freelancing_platform/assets/47822519/eaeac081-b8e0-4c3a-8ee7-88482d908dd5">
 
 

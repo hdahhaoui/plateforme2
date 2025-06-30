@@ -63,7 +63,7 @@ $countStmt->close();
     <h1 class="project-title"><?= htmlspecialchars($row['title']) ?></h1>
     <div class="project-meta">
         <span>
-            Client: <a href="profile.php?uid=<?= $row['user_id'] ?>"><?= htmlspecialchars($row['client_name']) ?></a>
+            Partenaire: <a href="profile.php?uid=<?= $row['user_id'] ?>"><?= htmlspecialchars($row['client_name']) ?></a>
             (<?= htmlspecialchars($row['client_email']) ?>)
         </span>
         <?php if (!empty($row['profile_img'])): ?>

@@ -33,7 +33,7 @@ $rowss = $resultss->fetch_assoc();
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Client</title>
+    <title>Partenaire</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -122,7 +122,7 @@ $row8 = $result8->fetch_assoc();?>
 
                 <div class="item header-text">
 
-                  <h2>Dashboard <br><em>Client</em></h2> <br> <br>
+                  <h2>Dashboard <br><em>Partenaire</em></h2> <br> <br>
                   <p>Adresse: <?= htmlspecialchars($rowss['address'] ?? '') ?><br>
                   Téléphone: <?= htmlspecialchars($rowss['phone'] ?? '') ?></p>
                   <div class="down-buttons">
@@ -162,13 +162,12 @@ $row8 = $result8->fetch_assoc();?>
       <label for=""style="padding:20px">Choisissez le type de service de votre projet</label>  
       <select id="prjtype" name="prjtype" placeholder="Service Ciblé" class="dial">
           <option value="" selected></option>
-          <option value="Developpement Web">Developpement Web</option>
-                                            <option value="Design Graphique">Design Graphique</option>
-                                            <option value="Developpement Mobile">Developpement Mobile</option>
-                                            <option value="Video & Animation">Video & Animation</option>
-                                            <option value="Marketing et Vente">Marketing et Vente</option>
-                                            <option value="E-Commerce , CMS et ERP">E-Commerce , CMS et ERP</option>
-                                         </select>
+          <option value="Structures">Structures</option>
+          <option value="Géotechnique">Géotechnique</option>
+          <option value="Transport">Transport</option>
+          <option value="Hydraulique">Hydraulique</option>
+          <option value="Environnement">Environnement</option>
+      </select>
       <label for=""style="padding:20px">Décrivez votre projet</label> 
       <textarea id="about" name="about" cols="30" rows="3" placeholder="Description du projet" class="dial"></textarea>
       <label for=""style="padding:20px">Quel est votre Budget ?</label>
@@ -192,12 +191,12 @@ $row8 = $result8->fetch_assoc();?>
       <div class="row">
         <div class="col-lg-6 align-self-center">
           <div class="left-image">
-            <img src="https://images.pexels.com/photos/3194518/pexels-photo-3194518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Two freelancers working together" class="serv">
+            <img src="https://images.pexels.com/photos/3194518/pexels-photo-3194518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Chantier de construction" class="serv">
           </div>
         </div>
         <div class="col-lg-6">
           <div class="section-heading">
-            <h2>  <em>Codify,</em>  <span>Le freelancing,</span>Pourquoi ?</h2>
+            <h2>  <em>Codify,</em>  <span>Le partenariat,</span>Pourquoi ?</h2>
            
             <div class="row">
               <div class="col-lg-4">
@@ -232,7 +231,7 @@ $row8 = $result8->fetch_assoc();?>
                     </div>
                     <div class="count-digit">Gratuit</div>
                     
-                    <p>Choisissez votre freelance idéal , sans obligation.</p>
+                    <p>Sélectionnez l'enseignant‑chercheur qui vous convient, sans engagement.</p>
                   </div>
                 </div>
               </div>

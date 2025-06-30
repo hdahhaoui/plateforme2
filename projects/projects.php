@@ -47,7 +47,7 @@ $row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
         <a class="logout-link" href="../include/logout.php">Logout</a>
     </div>
 </header>
-<h1 class="page-title">Dashboard <span>Freelancer</span></h1>
+<h1 class="page-title">Dashboard <span>Enseignant-Chercheur</span></h1>
 <div class="wrapper">
     <form class="search-form" method="get">
         <input type="text" name="q" placeholder="Search projects" value="<?php echo htmlspecialchars($search); ?>">

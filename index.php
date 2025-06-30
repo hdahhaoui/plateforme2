@@ -101,9 +101,9 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
             <div class="col-lg-6 align-self-center">
               <div class="owl-carousel owl-banner " style="width:572px ; ">
                 <div class="item header-text">
-                  <h6>Pour nos Clients</h6>
-                  <h2>Trouvez le <em>Freelance</em> pour vos <span> Missions</span></h2>
-                  <p>Codify est une plateforme de mise en relation des freelancers et des clients , inscrivez vous publier vos projets et trouvez vos freelancers.</p>
+                  <h6>Pour nos Partenaires</h6>
+                  <h2>Trouvez l'<em>enseignant‑chercheur</em> pour vos <span>projets</span></h2>
+                  <p>Codify met en relation le département de génie civil et ses partenaires socioéconomiques. Inscrivez‑vous, publiez vos besoins et entrez en contact avec les enseignants‑chercheurs.</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
                       <a href="#contact">Message Us Now</a>
@@ -112,9 +112,9 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Pour nos Talents</h6>
-                  <h2>Trouvez <em>grand travail</em>  <span>Rapidement</span></h2>
-                  <p>Codify est une plateforme de mise en relation des freelancers et des clients , inscrivez vous pour trouvez vos clients dans votre domaine d'expertise.</p>
+                  <h6>Pour nos Enseignants‑chercheurs</h6>
+                  <h2>Partagez votre <em>expertise</em> <span>facilement</span></h2>
+                  <p>La plateforme vous permet de présenter vos compétences et de collaborer avec des partenaires industriels sur des thématiques de génie civil.</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
                       <a href="#services">Our Services</a>
@@ -151,34 +151,34 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
         <div class="col-lg-12">
           <div class="owl-carousel owl-services">
             <div class="item">
-              <h4>E-Commerce , CMS , ERP</h4>
+              <h4>Conception des Structures</h4>
               <div class="icon"><img src="assets/images/ecom.png" alt=""></div>
-              <p>Prestashop , Wordpress ,  Drupal , Joomla  SAP , Woocommerce</p>
+              <p>ETABS, SAP2000, Robot Structural Analysis...</p>
             </div>
             <div class="item">
-              <h4>Design Graphique</h4>
+              <h4>Géotechnique</h4>
               <div class="icon"><img src="assets/images/graph.png" alt=""></div>
-              <p>Design de Logos , Illustrations , Web Design</p>
+              <p>Etudes de sol, fondations profondes, talus</p>
             </div>
             <div class="item">
-              <h4>Développement Web</h4>
+              <h4>Routes et Transport</h4>
               <div class="icon"><img src="assets/images/web3.png" alt=""></div>
-              <p>PHP , .Net , Javascript , Python , Java , Laravel , React , Angular ...</p>
+              <p>Conception routière, trafic, outils InfraWorks</p>
             </div>
             <div class="item">
-              <h4>Video & Animation</h4>
+              <h4>Hydraulique &amp; Environnement</h4>
               <div class="icon"><img src="assets/images/vid.png" alt=""></div>
-              <p>Animations 2D , 3D , Montage , Réalisation de Vidéos </p>
+              <p>Hydrologie, assainissement, HEC-RAS</p>
             </div>
             <div class="item">
-              <h4>Développement Mobile</h4>
+              <h4>Topographie &amp; BIM</h4>
               <div class="icon"><img src="assets/images/mobile.png" alt=""></div>
-              <p>React Native , Android Studio , Swift</p>
+              <p>Relevés, modélisation Revit, drones</p>
             </div>
             <div class="item">
-              <h4>Marketing et Vente</h4>
+              <h4>Gestion de Chantier</h4>
               <div class="icon"><img src="assets/images/seo.png" alt=""></div>
-              <p>Stratégie Marketing , SEO , SEA ,  Google ADS , Social Media ,...</p>
+              <p>Planification, sécurité, suivi des coûts</p>
             </div>
             
           </div>
@@ -192,12 +192,12 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
       <div class="row">
         <div class="col-lg-6 align-self-center">
           <div class="left-image">
-            <img src="https://images.pexels.com/photos/3194518/pexels-photo-3194518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Two freelancers working together" class="serv">
+            <img src="https://images.pexels.com/photos/3194518/pexels-photo-3194518.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Chantier de construction" class="serv">
           </div>
         </div>
         <div class="col-lg-6">
           <div class="section-heading">
-            <h2>  <em>Codify,</em>  <span>Le freelancing,</span>Pourquoi ?</h2>
+            <h2>  <em>Codify,</em>  <span>Le partenariat,</span>Pourquoi ?</h2>
            
             <div class="row">
               <div class="col-lg-4">
@@ -208,7 +208,7 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
                     </div>
                     <div class="count-digit">Simple</div>
                     
-                    <p>Décrivez votre projet en quelques mots sur la plateforme .</p>
+                    <p>Décrivez votre besoin en quelques mots sur la plateforme.</p>
                   </div>
                 </div>
               </div>
@@ -220,7 +220,7 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
                     </div>
                     <div class="count-digit">Rapide</div>
                    
-                    <p>Recevez une dizaine de devis en quelques minutes.</p>
+                    <p>Recevez rapidement des propositions de collaboration.</p>
                   </div>
                 </div>
               </div>
@@ -232,7 +232,7 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
                     </div>
                     <div class="count-digit">Gratuit</div>
                     
-                    <p>Choisissez votre freelance idéal , sans obligation.</p>
+                    <p>Sélectionnez l'enseignant‑chercheur qui vous convient, sans engagement.</p>
                   </div>
                 </div>
               </div>
@@ -356,7 +356,7 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
             <h2>Tarification <br>  <em>      facile</em> et<span> accessible</span></h2>
-            <span>Tarifs pour freelancers</span>
+            <span>Tarifs indicatifs</span>
           </div>
         </div>
       </div>
@@ -557,15 +557,15 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
   
   <div class="accordion">
     <div class="accordion-item">
-      <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Comment ca marche le freelance ?</span><span class="icon" aria-hidden="true"></span></button>
+      <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">Comment fonctionne la collaboration ?</span><span class="icon" aria-hidden="true"></span></button>
       <div class="accordion-content">
-        <p>Le freelance est un travailleur indépendant qui s'occupe de gérer seul son activité : il n'a ni employé, ni patron, mais il peut se tourner vers des prestataires externes pour déléguer certaines tâches, comme c'est souvent le cas avec la comptabilité par exemple. Être freelance n'est pas un statut juridique en soi.</p>
+        <p>La collaboration consiste à mettre en relation un partenaire socioéconomique et un enseignant‑chercheur autour d'un projet de génie civil.</p>
       </div>
     </div>
     <div class="accordion-item">
-      <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">Comment choisir le bon Freelancer pour ma Mission ?</span><span class="icon" aria-hidden="true"></span></button>
+      <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">Comment choisir le bon enseignant‑chercheur pour mon projet ?</span><span class="icon" aria-hidden="true"></span></button>
       <div class="accordion-content">
-        <p>Commencez tout d'abord par visualiser les devis reçus au niveau de votre Offre de Mission. Comparez les prix demandé par chaque Freelancer ainsi que le temps demandé pour avoir une idée sur la qualité et le respect des modalités de la prestation à fournir.
+        <p>Analysez les propositions rȩues et choisissez l'enseignant‑chercheur dont les compétences et les délais correspondent le mieux à vos attentes.
 </p>
       </div>
     </div>
@@ -573,15 +573,15 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
       <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Quel budget ?</span><span class="icon" aria-hidden="true"></span></button>
       <div class="accordion-content">
         <p>Avant de publier votre Mission, vous devez absolument lui affecter un Budget.<br>
-Le Budget doit être intéressant pour attirer un nombre important de Freelancers qui vous proposeront des tarifs dans les l'interval du budget proposé.<br>
-Le Budget proposé doit également répondre à la rémunération psychologiquement attendu par les Freelancers.</p>
+Le budget doit être suffisamment attractif pour recevoir plusieurs propositions.<br>
+Le budget proposé doit aussi correspondre aux attentes des enseignants‑chercheurs.</p>
       </div>
     </div>
     <div class="accordion-item">
       <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Comment bien rédiger mon offre de Mission ?</span><span class="icon" aria-hidden="true"></span></button>
       <div class="accordion-content">
         <p>Une Offre de Mission bien rédigée, est une Offre qui reprend tous les détails de la Mission tel un brief de cahier des charges. L'idée est de préciser les 3 idées suivantes:<br>
-Le Contexte de la Mission: Présenter aux Freelancers votre entreprise, son secteur d'activité et le pourquoi de la Mission.</p>
+Le contexte de la mission : présentez votre entreprise, son domaine d'activité et les objectifs du projet.</p>
       </div>
     </div>
     <div class="accordion-item">
