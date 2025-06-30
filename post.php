@@ -36,14 +36,14 @@ if ($pid) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     
     <meta charset="utf-8">
 	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?=($pid ? 'Edit' : 'Add')?>Post Project - Codify</title>
+    <title><?=($pid ? 'Modifier' : 'Ajouter')?> un projet - Codify</title>
 
 	<link href="<?=$favicon?>" rel="shortcut icon">
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
@@ -82,7 +82,7 @@ if ($pid) {
             <div class="sinup-box card">
                 <div class="card-body">
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/<?=($pid ? 'update' : 'add')?>-post.php" method="post" novalidate enctype="multipart/form-data">
-                        <h3 class="text-center m-b-20"><?=($pid ? 'Edit' : 'Post New')?> Project</h3>
+                        <h3 class="text-center m-b-20"><?=($pid ? 'Modifier' : 'Publier')?> un projet</h3>
                         <input type="hidden" name="pid" value="<?=$pid?>">
                         <div class="form-group">
                         <?php
@@ -100,74 +100,74 @@ if ($pid) {
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="name" class="text-info">Choose a name for your project</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="<?=htmlspecialchars($row['title'])?>">
+                                <label for="name" class="text-info">Choisissez un nom pour votre projet</label>
+                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Nom du projet" required value="<?=htmlspecialchars($row['title'] ?? '')?>">
                                 <div class="invalid-feedback help text-left">
-                                    Please enter name of project.
+                                    Veuillez saisir le nom du projet.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="prjtype" class="text-info">Choose type of your project</label>
+                                <label for="prjtype" class="text-info">Choisissez le type de projet</label>
                                 <select class="form-control form-control-line custom-select" id="prjtype" name="prjtype" required>
-                                    <option value="" <?=@($row['category'] == '') ? 'selected' : ''?>>Project Type </option>
-                                    <option value="Design Graphique" <?=@($row['category'] == 'Design Graphique') ? 'selected' : ''?>>Design Graphique</option>
-                                    <option value="Developpement Mobile" <?=@($row['category'] == 'Developpement Mobile') ? 'selected' : ''?>>Developpement Mobile</option>
-                                    <option value="Video & Animation" <?=@($row['category'] == 'Video & Animation') ? 'selected' : ''?>>Video & Animation</option>
-                                    <option value="Marketing et Vente" <?=@($row['category'] == 'Marketing et Vente') ? 'selected' : ''?>>Marketing et Vente</option>
-                                    <option value="E-Commerce , CMS et ERP" <?=@($row['category'] == 'E-Commerce , CMS et ERP') ? 'selected' : ''?>>E-Commerce , CMS et ERP</option>
+                                    <option value="" <?=(($row['category'] ?? '') == '') ? 'selected' : ''?>>Type de projet</option>
+                                    <option value="Design Graphique" <?=(($row['category'] ?? '') == 'Design Graphique') ? 'selected' : ''?>>Design Graphique</option>
+                                    <option value="Developpement Mobile" <?=(($row['category'] ?? '') == 'Developpement Mobile') ? 'selected' : ''?>>Développement Mobile</option>
+                                    <option value="Video & Animation" <?=(($row['category'] ?? '') == 'Video & Animation') ? 'selected' : ''?>>Vidéo & Animation</option>
+                                    <option value="Marketing et Vente" <?=(($row['category'] ?? '') == 'Marketing et Vente') ? 'selected' : ''?>>Marketing et Vente</option>
+                                    <option value="E-Commerce , CMS et ERP" <?=(($row['category'] ?? '') == 'E-Commerce , CMS et ERP') ? 'selected' : ''?>>E-Commerce , CMS et ERP</option>
                                 </select>
                                 <div class="invalid-feedback help text-left">
-                                    Please select your project type.
+                                    Veuillez sélectionner le type de projet.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="about" class="text-info">Tell us more about your project</label>
-                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required rows="3"><?=htmlspecialchars($row['description'])?></textarea>
+                                <label for="about" class="text-info">Détaillez votre projet</label>
+                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Description du projet" required rows="3"><?=htmlspecialchars($row['description'] ?? '')?></textarea>
                                 <div class="invalid-feedback help text-left">
-                                    Please enter description of project.
+                                    Veuillez fournir la description du projet.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="lang" class="text-info">What skills are required?</label>
-                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langauge or Skill" required="" value="<?=htmlspecialchars($row['lang'])?>">
+                                <label for="lang" class="text-info">Quelles compétences sont requises&nbsp;?</label>
+                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langages ou compétences" required value="<?=htmlspecialchars($row['lang'] ?? '')?>">
                                 <div class="invalid-feedback help text-left">
-                                    Please enter your langauge or skill.
+                                    Veuillez indiquer vos compétences ou langages.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="cost" class="text-info col-form-label">What is your budget?</label>
-                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="<?=htmlspecialchars($row['budget'])?>" min="600" max="100000">
+                                <label for="cost" class="text-info col-form-label">Quel est votre budget&nbsp;?</label>
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Coût du projet en INR" required value="<?=htmlspecialchars($row['budget'] ?? '')?>" min="600" max="100000">
                                 <div class="invalid-feedback help text-left">
-                                    Please enter your project budget.
+                                    Veuillez saisir le budget du projet.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="deadline" class="text-info">Project deadline</label>
-                                <input type="date" id="deadline" name="deadline" class="form-control form-control-line" required value="<?=htmlspecialchars($row['deadline'])?>">
+                                <label for="deadline" class="text-info">Date limite du projet</label>
+                                <input type="date" id="deadline" name="deadline" class="form-control form-control-line" required value="<?=htmlspecialchars($row['deadline'] ?? '')?>">
                                 <div class="invalid-feedback help text-left">
-                                    Please provide a project deadline.
+                                    Veuillez préciser une date limite.
                                 </div>
                             </div>
                         </div>
 <?php if ($pid): ?>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label for="status" class="text-info">Project status</label>
+                                <label for="status" class="text-info">Statut du projet</label>
                                 <select id="status" name="status" class="form-control form-control-line">
-                                    <option value="open" <?= @$row['status']==='open'?'selected':'' ?>>open</option>
-                                    <option value="in progress" <?= @$row['status']==='in progress'?'selected':'' ?>>in progress</option>
-                                    <option value="closed" <?= @$row['status']=='closed'?'selected':'' ?>>closed</option>
-                                    <option value="completed" <?= @$row['status']=='completed'?'selected':'' ?>>completed</option>
+                                    <option value="open" <?= ($row['status'] ?? '')==='open'?'selected':'' ?>>ouvert</option>
+                                    <option value="in progress" <?= ($row['status'] ?? '')==='in progress'?'selected':'' ?>>en cours</option>
+                                    <option value="closed" <?= ($row['status'] ?? '')==='closed'?'selected':'' ?>>fermé</option>
+                                    <option value="completed" <?= ($row['status'] ?? '')==='completed'?'selected':'' ?>>terminé</option>
                                 </select>
                             </div>
                         </div>
@@ -191,7 +191,7 @@ if ($pid) {
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
                                 
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn"><?=($pid ? 'Edit' : 'Post')?> Project</button>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn"><?=($pid ? 'Modifier' : 'Publier')?> le projet</button>
                             </div>
                         </div>
                     </form>
@@ -207,14 +207,14 @@ if ($pid) {
                 $projects = $stmt->get_result();
             }
             ?>
-            <h4 class="mt-5">My Projects</h4>
+            <h4 class="mt-5">Mes projets</h4>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Title</th>
+                        <th>Titre</th>
                         <th>Budget</th>
-                        <th>Deadline</th>
-                        <th>Status</th>
+                        <th>Date limite</th>
+                        <th>Statut</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -228,16 +228,16 @@ if ($pid) {
                             <form method="post" action="include/update-status.php" class="form-inline">
                                 <input type="hidden" name="pid" value="<?= $p['id'] ?>">
                                 <select name="status" class="form-control form-control-sm mr-2">
-                                                                        <option value="open" <?= $p["status"]=="open"?"selected":"" ?>>open</option>
-                                                                        <option value="in progress" <?= $p["status"]=="in progress"?"selected":"" ?>>in progress</option>
-                                    <option value="closed" <?= $p["status"]=="closed"?"selected":"" ?>>closed</option>
-                                                                        <option value="completed" <?= $p["status"]=="completed"?"selected":"" ?>>completed</option>
+                                    <option value="open" <?= $p['status']==='open'?'selected':'' ?>>ouvert</option>
+                                    <option value="in progress" <?= $p['status']==='in progress'?'selected':'' ?>>en cours</option>
+                                    <option value="closed" <?= $p['status']==='closed'?'selected':'' ?>>fermé</option>
+                                    <option value="completed" <?= $p['status']==='completed'?'selected':'' ?>>terminé</option>
                                 </select>
-                                <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                                <button type="submit" class="btn btn-sm btn-primary">Mettre à jour</button>
                             </form>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-secondary" href="post.php?pid=<?= $p['id'] ?>">Edit</a>
+                            <a class="btn btn-sm btn-secondary" href="post.php?pid=<?= $p['id'] ?>">Modifier</a>
                         </td>
                     </tr>
                 <?php endwhile; endif; ?>
