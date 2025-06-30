@@ -29,7 +29,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                 <div id="title-container">
                     <a href="index.php"><img class="covid-image" src="assets/images/logoco.png"></a>
                     <h2>Codify</h2>
-                    <h3>Plateforme de Freelance</h3>
+                    <h3>Plateforme Entreprise - Génie Civil</h3>
                     <div style="font-size:30px ;">Inscrivez-vous pour continuer</div>
                 </div>
             </div>
@@ -62,11 +62,11 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                 <div class="form-check ps-0 q-box" >
                                     <div class="q-box__question">
                                         <input class="form-check-input question__input" id="free" name="usertype" type="radio" value="freelancer" > 
-                                        <label class="form-check-label question__label" for="free">Freelancer</label>
+                                        <label class="form-check-label question__label" for="free">Enseignant-Chercheur</label>
                                     </div>
                                     <div class="q-box__question">
                                         <input checked class="form-check-input question__input" id="cli" name="usertype" type="radio" value="client" > 
-                                        <label class="form-check-label question__label" for="cli">Client / Employeur </label>
+                                        <label class="form-check-label question__label" for="cli">Partenaire socioéconomique</label>
                                     </div>
                                 </div>
                             </div>
@@ -117,11 +117,11 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                         <label class="form-check-label question__label" for="q_2_no">No</label> -->
                                     <br><br> <br><label for="">Domaine d'expértise:</label> <br>
                                     <select name="domaine" id="" required>
-                                        <option value="Développement Web">Développement Web</option>
-                                        <option value="Développement Mobile">Développement Mobile</option>
-                                        <option value="SEO et marketing">SEO et marketing</option>
-                                        <option value="Design Graphique">Design Graphique</option>
-                                        <option value="Filmmaking">Filmmaking</option>
+                                        <option value="Structures">Structures</option>
+                                        <option value="Géotechnique">Géotechnique</option>
+                                        <option value="Hydraulique">Hydraulique</option>
+                                        <option value="Transport">Transport</option>
+                                        <option value="Environnement">Environnement</option>
                                     </select> <br> <br> <br>
 
                                    
@@ -147,12 +147,11 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                     <div class="q-box__question">
                                          <label class="" for="sec">Service ciblé :</label> 
                                          <select required class="" id="serv" name="serv">
-                                            <option value="Developpement Web">Developpement Web</option>
-                                            <option value="Design Graphique">Design Graphique</option>
-                                            <option value="Developpement Mobile">Developpement Mobile</option>
-                                            <option value="Video & Animation">Video & Animation</option>
-                                            <option value="Marketing et Vente">Marketing et Vente</option>
-                                            <option value="E-Commerce , CMS et ERP">E-Commerce , CMS et ERP</option>
+                                            <option value="Structures">Structures</option>
+                                            <option value="Géotechnique">Géotechnique</option>
+                                            <option value="Transport">Transport</option>
+                                            <option value="Hydraulique">Hydraulique</option>
+                                            <option value="Environnement">Environnement</option>
                                          </select>
                                          <br>
 

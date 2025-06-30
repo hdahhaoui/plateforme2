@@ -57,11 +57,11 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                 <div class="form-check ps-0 q-box" >
                                     <div class="q-box__question">
                                         <input class="form-check-input question__input" id="free" name="usertype" type="radio" value="freelancer" > 
-                                        <label class="form-check-label question__label" for="free">Freelancer</label>
+                                        <label class="form-check-label question__label" for="free">Enseignant-Chercheur</label>
                                     </div>
                                     <div class="q-box__question">
                                         <input checked class="form-check-input question__input" id="cli" name="usertype" type="radio" value="client" > 
-                                        <label class="form-check-label question__label" for="cli">Client / Employeur </label>
+                                        <label class="form-check-label question__label" for="cli">Partenaire socioéconomique</label>
                                     </div>
                                 </div>
 
@@ -101,7 +101,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                 <div id="title-container">
                 <a href="index.php"><img class="covid-image" src="assets/images/logoco.png"></a>
                     <h2>Codify</h2>
-                    <h3>Plateforme de Freelance</h3>
+                    <h3>Plateforme Entreprise - Génie Civil</h3>
                     <div style="font-size: 24px;">Tout ce que vous faites sur Codify est lié à votre compte.</div>
                 </div>
             </div>
