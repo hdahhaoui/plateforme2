@@ -99,7 +99,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!-- second side-->
             <div class="col-lg-5 offset-lg-1 mx-0 px-0">
                 <div id="title-container">
-                <a href="index.php"><img class="covid-image" src="assets/images/logoco.png"></a>
+                <a href="index.php"><img class="covid-image" src="php/images/1654913967Bootstrap_logo.svg.png" alt="Codify logo"></a>
                     <h2>Codify</h2>
                     <h3>Plateforme Entreprise - Génie Civil</h3>
                     <div style="font-size: 24px;">Tout ce que vous faites sur Codify est lié à votre compte.</div>
