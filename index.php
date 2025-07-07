@@ -39,23 +39,13 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
     <link rel="stylesheet" href="assets/css/templatemo-onix-digital.css">
     <link rel="stylesheet" href="assets/css/animated.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="homepage.css">
 
   </head>
 
 <body>
 
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
+
 
   <!-- ***** Header Area Start ***** -->
   <header id="page-top" class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
@@ -76,11 +66,9 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
               
               <li class="scroll-to-section"><a href="#top" class="active"></a></li>
               <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#about">Tarifs</a></li>
-              <li class="scroll-to-section"><a href="#portfolio">Informations</a></li>
-              <li class="scroll-to-section"><a href="#video"></a></li> 
-              <li class="scroll-to-section"><a href="login.php">Connexion / M'inscrire</a></li> 
-              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="signup.php">Déposer Mission</a></div></li> 
+              <li class="scroll-to-section"><a href="#about">Pourquoi Codify</a></li>
+              <li class="scroll-to-section"><a href="login.php">Connexion / M'inscrire</a></li>
+              <li class="scroll-to-section"><div class="main-red-button-hover"><a href="signup.php">Déposer Mission</a></div></li>
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
@@ -93,52 +81,16 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner" id="top">
+  <section class="hero bg-light text-center">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="owl-carousel owl-banner " style="width:572px ; ">
-                <div class="item header-text">
-                  <h6>Pour nos Partenaires</h6>
-                  <h2>Trouvez l'<em>enseignant‑chercheur</em> pour vos <span>projets</span></h2>
-                  <p>Codify met en relation le département de génie civil et ses partenaires socioéconomiques. Inscrivez‑vous, publiez vos besoins et entrez en contact avec les enseignants‑chercheurs.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover">
-                      <a href="#contact">Message Us Now</a>
-                    </div>
-                    
-                  </div>
-                </div>
-                <div class="item header-text">
-                  <h6>Pour nos Enseignants‑chercheurs</h6>
-                  <h2>Partagez votre <em>expertise</em> <span>facilement</span></h2>
-                  <p>La plateforme vous permet de présenter vos compétences et de collaborer avec des partenaires industriels sur des thématiques de génie civil.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover">
-                      <a href="#services">Our Services</a>
-                    </div>
-                   
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h1 class="display-4">Bienvenue sur Codify</h1>
+      <p class="lead">Plateforme de collaboration entre le département de génie civil et ses partenaires socio-économiques.</p>
+      <a href="signup.php" class="btn btn-primary">Déposer une mission</a>
     </div>
-  </div>
+  </section>
 
   <div id="services" class="our-services section">
-    <div class="services-right-dec">
-      <img src="assets/images/services-right-dec.png" alt="">
-    </div>
     <div class="container">
-      <div class="services-left-dec">
-        <img src="assets/images/services-left-dec.png" alt="">
-      </div>
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
@@ -243,178 +195,6 @@ if (isset($_SESSION['USER_TYPE']) && $_SESSION['USER_TYPE']=='freelancer') {
     </div>
   </div>
 
-  <div id="portfolio" class="our-portfolio section">
-    <div class="portfolio-left-dec">
-      <img src="assets/images/portfolio-left-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <h2>Les Services  <em>professionnels</em> <span>populaires</span></h2> <br>
-            <span>Nos Services</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="owl-carousel owl-portfolio">
-            
-            <div class="item">
-              <div class="thumb">
-                <img src="https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                   
-                    <span>Concevez votre site Web</span>
-                    <a href="#"><h4>Wordpress</h4></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="https://images.pexels.com/photos/6177612/pexels-photo-6177612.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    
-                    <span>construisez votre marque </span>
-                    <a href=""><h4>Design de Logo</h4></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="https://images.pexels.com/photos/5632382/pexels-photo-5632382.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                   
-                    <span>construisez votre marque</span>
-                     <a href="#"><h4>E-commerce</h4></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <span>Atteignez plus de clients</span>
-                    <a href="#"><h4>SEO</h4></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="https://images.pexels.com/photos/821749/pexels-photo-821749.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <span>Partager vos Illustrations</span>
-                    <a href="#"><h4>Photographie</h4></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="https://images.pexels.com/photos/3585088/pexels-photo-3585088.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    
-                    <span>Concrétiser vos idées</span>
-                    <a href="#"><h4>Application Mobile</h4></a>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            
-           
-            
-           
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="pricing" class="pricing-tables">
-    <div class="tables-left-dec">
-      <img src="assets/images/tables-left-dec.png" alt="">
-    </div>
-    <div class="tables-right-dec">
-      <img src="assets/images/tables-right-dec.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 offset-lg-3">
-          <div class="section-heading">
-            <h2>Tarification <br>  <em>      facile</em> et<span> accessible</span></h2>
-            <span>Tarifs indicatifs</span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="item first-item">
-            <h4>Plan Starter</h4>
-            <em>390 DH</em> <br>
-            <span>199DH</span> <br>
-            <p>Votre essentiel pour bien démarrer </p>
-            <ul>
-              <li>Durée : 15 jours</li>
-              <li>20 Projets</li>
-              <li></li>
-              <br> <br> 
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Commencez</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item second-item">
-            <h4>Plan Standard</h4>
-            <em>400 DH</em>  <br>
-            <span>299 DH</span> <br>
-            <p>Remportez des missions facilement  </p>
-            <ul>
-              <li>Durée : 6 mois</li>
-              <li>50 Projets</li>
-              <li>Badge Pro</li>
-             
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">obtenez le</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item third-item">
-            <h4>Plan Expert</h4>
-            <em>560 DH</em> <br>
-            <span>390 DH</span> <br>
-            <p>Augmentez vos bénéfices rapidement</p>
-            <ul>
-              <li>Durée illimitée</li>
-              <li>Projets illimités</li>
-              <li>Badge expert</li>
-              
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Acheter maintenant              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 <!--
   <div id="subscribe" class="subscribe">
     <div class="container">
@@ -594,8 +374,6 @@ Le contexte de la mission : présentez votre entreprise, son domaine d'activité
   </div>
 </div>
 
-  <div class="footer-dec">
-    <img src="assets/images/footer-dec.png" alt="">
   </div>
 
   <footer>
