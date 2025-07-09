@@ -27,9 +27,9 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!-- TITLE -->
             <div class="col-lg-5 offset-lg-1 mx-0 px-0">
                 <div id="title-container">
-                    <a href="index.php"><img class="covid-image" src="assets/images/logoco.png"></a>
-                    <h2>Codify</h2>
-                    <h3>Plateforme Entreprise - Génie Civil</h3>
+                    <a href="index.php"><img class="covid-image" "img/slide1.jpg"></a>
+                    <h2>CELUT-GC</h2>
+                    <h3>Espace de collaboration dans le domaine de Génie Civil</h3>
                     <div style="font-size:30px ;">Inscrivez-vous pour continuer</div>
                 </div>
             </div>
