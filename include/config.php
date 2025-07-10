@@ -4,7 +4,7 @@ $user = 'root';
 $pass = '';
 $db = 'freelancing_platform';
 $port = 3306;
-$site = 'Codify';
+$site = 'CELUT-GC';
 $logo = 'assets/logo.png';
 $favicon = 'assets/favicon.ico';
 

@@ -5,7 +5,7 @@ $user = 'codiwoob_hassan';
 $pass = 'Sk@teordie2016';
 $db = 'freelancing_platform';
 $port = "3306";
-$site = 'Codify';
+$site = 'CELUT-GC';
 
 $logo = 'asset/logo.png';
 $favicon = 'asset/favicon.ico';
