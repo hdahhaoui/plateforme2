@@ -76,7 +76,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                             <div class="step">
                                <br> <br>
                                 <div class="mt-1">
-                                    <label class="form-label">Nom Complet :</label> 
+                                    <label class="form-label" id="nameLabel">Nom Complet :</label>
                                     <input class="form-control" id="name" name="name" type="text" required>
                                 </div>
                                 
@@ -93,7 +93,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                     <label class="form-label">Confirmation du Mot de Passe :</label> 
                                     <input class="form-control" id="cpassword" name="cpassword"  required value="" type="password" style="width: 100%">
                                 </div>
-                                <label class="" for="profileimage">Photo d'identité</label> <br>
+                                <label class="" id="imageLabel" for="profileimage">Photo d'identité</label> <br>
                                     <input type="file" id="image" name="image" class="form-control form-control-line" required accept="image/x-png,image/gif,image/jpeg,image/jpg"> <br> <br> <br>
                                    
                                 <div class="row mt-2">
@@ -133,6 +133,8 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                     
                                     <label for="">CIN</label> <br>
                                     <input type="file" id="id" name="id" class="form-control form-control-line" required> <br> <br>
+                                    <label for="">Attestation de travail</label> <br>
+                                    <input type="file" id="attestation" name="attestation" class="form-control form-control-line" required> <br> <br>
                                     </div>
                                 </div>
                                 </div>
@@ -197,12 +199,16 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                 document.getElementById('client').style.display="none";
                 document.getElementById('idcli').style.display="none";
                 document.getElementById('idfree').style.display="block"
+                document.getElementById('nameLabel').innerText = 'Nom Complet :';
+                document.getElementById('imageLabel').innerText = "Photo d'identité";
         }
         else if(client.checked){
             document.getElementById('freelancer').style.display="none";
             document.getElementById('client').style.display="block";
             document.getElementById('idcli').style.display="block";
             document.getElementById('idfree').style.display="none"
+            document.getElementById('nameLabel').innerText = "Nom de l'entreprise :";
+            document.getElementById('imageLabel').innerText = "Logo de l'entreprise";
         }}
     </script>
     <script src="signup.js"></script>

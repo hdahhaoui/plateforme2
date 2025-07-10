@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS freelancer (
     fid INT PRIMARY KEY,
     name VARCHAR(100),
     lang VARCHAR(100),
+    attestation VARCHAR(255),
     FOREIGN KEY (fid) REFERENCES users(id) ON DELETE CASCADE
 );
 

@@ -23,6 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    $attestationName = null;
+    if (!empty($_FILES['attestation']['name'])) {
+        $targetDir = dirname(__DIR__) . '/php/images/';
+        if (!file_exists($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+        $base = basename($_FILES['attestation']['name']);
+        $attestationName = time() . 'att_' . $base;
+        $path = $targetDir . $attestationName;
+        if (!move_uploaded_file($_FILES['attestation']['tmp_name'], $path)) {
+            $attestationName = null;
+        }
+    }
+
     // Determine if the `users` table uses the column `name` or `username` for the
     // user's display name. Some deployments still contain a legacy `username`
     // field which triggers a SQL error when `name` is used.
@@ -87,9 +101,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         } else {
             $domain = trim($_POST['domaine'] ?? '');
-            $fstmt = $mysqli->prepare('INSERT INTO freelancer (fid, name, lang) VALUES (?,?,?)');
+
+            $columnsFl = 'fid, name, lang';
+            $placeFl  = '?,?,?';
+            $typesFl   = 'iss';
+            $paramsFl  = [$uid, $name, $domain];
+
+            $attCheck = $mysqli->query("SHOW COLUMNS FROM freelancer LIKE 'attestation'");
+            if ($attCheck && $attCheck->num_rows > 0) {
+                $columnsFl .= ', attestation';
+                $placeFl   .= ',?';
+                $typesFl   .= 's';
+                $paramsFl[] = $attestationName;
+            }
+
+            $fstmt = $mysqli->prepare("INSERT INTO freelancer ($columnsFl) VALUES ($placeFl)");
             if ($fstmt) {
-                $fstmt->bind_param('iss', $uid, $name, $domain);
+                $fstmt->bind_param($typesFl, ...$paramsFl);
                 $fstmt->execute();
             }
         }
@@ -105,8 +133,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $msgStmt->execute();
         }
     }
-    $_SESSION['msg'] = ['type' => 'success', 'msg' => 'Account created'];
-    header('Location: ../login.php');
+    $_SESSION['USER_ID'] = $uid;
+    $_SESSION['USER_TYPE'] = $type;
+    if ($type === 'client') {
+        header('Location: ../client.php');
+    } else {
+        header('Location: ../projects/projects.php');
+    }
     exit;
 }
 header('Location: ../signup.php');
