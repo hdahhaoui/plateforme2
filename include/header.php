@@ -26,7 +26,9 @@ if ($stmt) {
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/index.php">Codify</a>
+  <span class="navbar-brand mb-0">
+      <img src="<?= htmlspecialchars($logo) ?>" alt="<?= htmlspecialchars($site) ?>" style="height:40px;">
+  </span>
   <?php if ($username): ?>
   <div class="ml-auto d-flex align-items-center">
     <?php if ($profileImg): ?>
