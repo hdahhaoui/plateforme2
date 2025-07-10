@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pass = '';
-$db = 'freelancing_platform';
+$db = 'gc_platform';
 $port = 3306;
 $site = 'CELUT-GC';
 $logo = 'assets/logo.png';
