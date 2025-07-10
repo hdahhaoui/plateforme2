@@ -42,10 +42,16 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!-- FORMULAIRE DE CONNEXION -->
             <div class="col-md-7 bg-white p-4">
                 <h3 class="mb-4 text-center fw-bold" style="color:#337ab7;">Connexion</h3>
-                <form method="post" action="login_check.php">
+                <form method="post" action="include/check-user.php">
+                    <?php if (isset($_SESSION['msg']) && $_SESSION['msg'] != ''): ?>
+                        <div class="alert alert-<?= $_SESSION['msg']['type']; ?> alert-dismissable">
+                            <?= $_SESSION['msg']['msg']; ?>
+                        </div>
+                        <?php $_SESSION['msg'] = ''; unset($_SESSION['msg']); ?>
+                    <?php endif; ?>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Nom d'utilisateur</label>
-                        <input type="text" class="form-control" id="username" name="username" required autocomplete="username">
+                        <label for="email" class="form-label">Adresse E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Mot de passe</label>
