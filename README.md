@@ -17,14 +17,14 @@ La plateforme facilite la mise en relation entre les enseignants‑chercheurs du
 
 1. **Cloner le Répertoire**: Clonez ce dépôt sur votre machine locale en utilisant la commande suivante :
     ```bash
-    git clone https://github.com/hemza1/freelancing_platform
+    git clone https://github.com/hemza1/gc_platform
     ```
 
 2. **Configuration de la Base de Données**: Configurez les paramètres de connexion dans le fichier `include/config.php`.
 
 3. **Création des Tables**: Importez le fichier `db/schema.sql` dans votre base de données. Par exemple :
     ```bash
-    mysql -u <user> -p freelancing_platform < db/schema.sql
+    mysql -u <user> -p gc_platform < db/schema.sql
     ```
 
 
@@ -49,16 +49,16 @@ La plateforme facilite la mise en relation entre les enseignants‑chercheurs du
     ## Screenshots de l'application
 
     ### Page d'atterrissage côté Partenaire
-    <img width="960" alt="client" src="https://github.com/hemza1/freelancing_platform/assets/47822519/30dfcbf4-8e9c-4d3c-9e38-a51f719c552c">
+    <img width="960" alt="client" src="https://github.com/hemza1/gc_platform/assets/47822519/30dfcbf4-8e9c-4d3c-9e38-a51f719c552c">
     
     ### Page d'atterrissage côté Enseignant‑Chercheur
-    <img width="949" alt="freelancer" src="https://github.com/hemza1/freelancing_platform/assets/47822519/90782012-d5d1-450b-a916-70c6463ec739">
+    <img width="949" alt="freelancer" src="https://github.com/hemza1/gc_platform/assets/47822519/90782012-d5d1-450b-a916-70c6463ec739">
     
     ### Liste des projets destinés à l'enseignant‑chercheur
-    <img width="663" alt="login2" src="https://github.com/hemza1/freelancing_platform/assets/47822519/94db52f3-5b8c-4e2b-a385-89911368d487">
-    <img width="660" alt="login" src="https://github.com/hemza1/freelancing_platform/assets/47822519/f4bc7007-3ce4-47bc-b142-6e4b427ea4ec">
+    <img width="663" alt="login2" src="https://github.com/hemza1/gc_platform/assets/47822519/94db52f3-5b8c-4e2b-a385-89911368d487">
+    <img width="660" alt="login" src="https://github.com/hemza1/gc_platform/assets/47822519/f4bc7007-3ce4-47bc-b142-6e4b427ea4ec">
     
     ### Création de projet pour le partenaire
-    <img width="474" alt="projet" src="https://github.com/hemza1/freelancing_platform/assets/47822519/eaeac081-b8e0-4c3a-8ee7-88482d908dd5">
+    <img width="474" alt="projet" src="https://github.com/hemza1/gc_platform/assets/47822519/eaeac081-b8e0-4c3a-8ee7-88482d908dd5">
 
 

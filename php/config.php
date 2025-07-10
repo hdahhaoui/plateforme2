@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'codiwoob_hassan';
 $pass = 'Sk@teordie2016';
-$db = 'freelancing_platform';
+$db = 'gc_platform';
 $port = "3306";
 $site = 'CELUT-GC';
 
