@@ -17,6 +17,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <title>Signup</title>
 </head>
@@ -27,7 +28,9 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!-- TITLE -->
             <div class="col-lg-5 offset-lg-1 mx-0 px-0">
                 <div id="title-container">
-                    <a href="index.php"><img class="covid-image" "img/slide1.jpg"></a>
+                    <a href="index.php" class="logo-login" title="Revenir à l'accueil">
+                        <img src="img/logo-celutgc.png" alt="Logo CELUT-GC" class="covid-image">
+                    </a>
                     <h2>CELUT-GC</h2>
                     <h3>Espace de collaboration dans le domaine de Génie Civil</h3>
                     <div style="font-size:30px ;">Inscrivez-vous pour continuer</div>
@@ -203,5 +206,16 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
         }}
     </script>
     <script src="signup.js"></script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span>© 2025 CELUT-GC. Tous droits réservés.</span>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
