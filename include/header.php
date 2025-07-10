@@ -8,20 +8,20 @@ if (isset($_SESSION['USER_ID'])) {
     $uid = $_SESSION['USER_ID'];
     if (isset($mysqli)) {
         $stmt = $mysqli->prepare('SELECT * FROM users WHERE id=?');
-        if ($stmt) {
-            $stmt->bind_param('i', $uid);
-            $stmt->execute();
-            $res = $stmt->get_result();
-            if ($row = $res->fetch_assoc()) {
-                if (isset($row['name'])) {
-                    $username = $row['name'];
-                } elseif (isset($row['username'])) {
-                    $username = $row['username'];
-                }
-                $profileImg = $row['profile_img'] ?? '';
-            }
-            $stmt->close();
+if ($stmt) {
+    $stmt->bind_param('i', $uid);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    if ($userRow = $res->fetch_assoc()) {
+        if (isset($userRow['name'])) {
+            $username = $userRow['name'];
+        } elseif (isset($userRow['username'])) {
+            $username = $userRow['username'];
         }
+        $profileImg = $userRow['profile_img'] ?? '';
+    }
+    $stmt->close();
+}
     }
 }
 ?>
