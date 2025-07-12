@@ -26,9 +26,9 @@ if ($stmt) {
 }
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <span class="navbar-brand mb-0">
+  <span class="navbar-brand mb-0 d-flex align-items-center">
       <img src="<?= htmlspecialchars($logo) ?>" alt="<?= htmlspecialchars($site) ?>" style="height:40px;">
-  </span>
+      <span class="ml-2 font-weight-bold"><?php echo htmlspecialchars($site); ?></span>
   <?php if ($username): ?>
   <div class="ml-auto d-flex align-items-center">
     <?php if ($profileImg): ?>
