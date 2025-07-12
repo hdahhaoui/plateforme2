@@ -112,11 +112,11 @@ if ($pid) {
                                 <label for="prjtype" class="text-info">Choisissez le type de projet</label>
                                 <select class="form-control form-control-line custom-select" id="prjtype" name="prjtype" required>
                                     <option value="" <?=(($row['category'] ?? '') == '') ? 'selected' : ''?>>Type de projet</option>
-                                    <option value="Design Graphique" <?=(($row['category'] ?? '') == 'Design Graphique') ? 'selected' : ''?>>Design Graphique</option>
-                                    <option value="Developpement Mobile" <?=(($row['category'] ?? '') == 'Developpement Mobile') ? 'selected' : ''?>>Développement Mobile</option>
-                                    <option value="Video & Animation" <?=(($row['category'] ?? '') == 'Video & Animation') ? 'selected' : ''?>>Vidéo & Animation</option>
-                                    <option value="Marketing et Vente" <?=(($row['category'] ?? '') == 'Marketing et Vente') ? 'selected' : ''?>>Marketing et Vente</option>
-                                    <option value="E-Commerce , CMS et ERP" <?=(($row['category'] ?? '') == 'E-Commerce , CMS et ERP') ? 'selected' : ''?>>E-Commerce , CMS et ERP</option>
+                                    <option value="Structures" <?=(($row['category'] ?? '') == 'Structures') ? 'selected' : ''?>>Structures</option>
+                                    <option value="Géotechnique" <?=(($row['category'] ?? '') == 'Géotechnique') ? 'selected' : ''?>>Géotechnique</option>
+                                    <option value="Hydraulique" <?=(($row['category'] ?? '') == 'Hydraulique') ? 'selected' : ''?>>Hydraulique</option>
+                                    <option value="Transport et Infrastructures" <?=(($row['category'] ?? '') == 'Transport et Infrastructures') ? 'selected' : ''?>>Transport et Infrastructures</option>
+                                    <option value="Matériaux et Construction Durable" <?=(($row['category'] ?? '') == 'Matériaux et Construction Durable') ? 'selected' : ''?>>Matériaux et Construction Durable</option>
                                 </select>
                                 <div class="invalid-feedback help text-left">
                                     Veuillez sélectionner le type de projet.
@@ -235,6 +235,7 @@ if ($pid) {
                         <td>
                             <a class="btn btn-sm btn-secondary" href="post.php?pid=<?= $p['id'] ?>">Modifier</a>
                             <a class="btn btn-sm btn-danger" href="include/delete-post.php?pid=<?= $p['id'] ?>" onclick="return confirm('Supprimer ce projet ?');">Supprimer</a>
+                            <a class="btn btn-sm btn-success" href="post.php">Ajouter</a>
                         </td>
                     </tr>
                 <?php endwhile; endif; ?>
