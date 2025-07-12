@@ -290,9 +290,11 @@ $row8 = $result8->fetch_assoc();?>
         <a target="_blank" style="text-decoration:none ;" href="projects.php?pid=<?=$row['id']?>&fid=<?=$row['fid']?>"  data-toggle="tooltip" data-original-title="Show request"><button class="act req">
           toutes les requêtes
                                                     </button></a>
-           <a target="_blank" href="post.php?pid=<?=$row['id']?>" data-toggle="tooltip" data-original-title="Delete">
+           <a target="_blank" href="post.php?pid=<?=$row['id']?>" data-toggle="tooltip" data-original-title="Edit">
            <button class="act ed"> modifier</button>
                                                     </a>
+          <a href="post.php" data-toggle="tooltip" data-original-title="Add project">
+          <button class="act add"> Ajouter projet</button></a>
           <a href="include/delete-post.php?pid=<?=$row['id']?>" data-toggle="tooltip" data-original-title="Delete">
           <button class="act del"> Supprimer</button></a></div></div>
       </li>
