@@ -238,6 +238,7 @@ if ($pid) {
                         <td>
                             <a class="btn btn-sm btn-secondary" href="post.php?pid=<?= $p['id'] ?>">Modifier</a>
                             <a class="btn btn-sm btn-danger" href="include/delete-post.php?pid=<?= $p['id'] ?>" onclick="return confirm('Supprimer ce projet ?');">Supprimer</a>
+                            <a class="btn btn-sm btn-success" href="post.php">Ajouter</a>
                         </td>
                     </tr>
                 <?php endwhile; endif; ?>
