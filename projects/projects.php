@@ -12,9 +12,18 @@ if (!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'freelancer') {
 }
 
 $fid = $_SESSION['USER_ID'];
-$result = $mysqli->query("SELECT `lang` FROM `freelancer` WHERE `fid` = $fid");
-$row  = $result && $result->num_rows ? $result->fetch_assoc() : null;
-$lang = $row['lang'] ?? '';
+// Retrieve freelancer info along with the associated profile image
+$stmtInfo = $mysqli->prepare(
+    'SELECT f.lang, f.name, u.profile_img FROM freelancer f
+     JOIN users u ON f.fid = u.id WHERE f.fid = ?'
+);
+$stmtInfo->bind_param('i', $fid);
+$stmtInfo->execute();
+$infoRes = $stmtInfo->get_result();
+$infoRow = $infoRes && $infoRes->num_rows ? $infoRes->fetch_assoc() : null;
+$lang = $infoRow['lang'] ?? '';
+$profileImg = $infoRow['profile_img'] ?? '';
+$stmtInfo->close();
 
 $search = trim($_GET['q'] ?? '');
 if ($search !== '') {
@@ -26,8 +35,6 @@ if ($search !== '') {
     $result = $mysqli->query("SELECT * FROM post_req RIGHT JOIN projects ON post_req.pid = projects.id ORDER BY post_req.status DESC");
 }
 
-$result3 = $mysqli->query("SELECT * FROM `freelancer` WHERE `fid` = $fid");
-$row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +48,10 @@ $row3 = $result3 && $result3->num_rows ? $result3->fetch_assoc() : null;
 <header class="header">
     <div class="logo">Codify</div>
     <div class="user-settings">
-        <img class="user-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%283%29+%281%29.png" alt="">
-        <div class="user-name"><?php echo $row3['name'] ?? '' ?></div>
+        <?php if (!empty($profileImg)): ?>
+            <img class="user-profile" src="../php/images/<?= htmlspecialchars($profileImg) ?>" alt="">
+        <?php endif; ?>
+        <div class="user-name"><?php echo $infoRow['name'] ?? '' ?></div>
         <a style="margin-right:10px;" href="../profile.php?uid=<?=$fid?>">Profil</a>
         <a class="logout-link" href="../include/logout.php">Logout</a>
     </div>
