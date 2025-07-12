@@ -5,7 +5,7 @@ $pass = '';
 $db = 'gc_platform';
 $port = 3306;
 $site = 'CELUT-GC';
-$logo = 'assets/logo.png';
+$logo = "img/logo-celutgc.png";
 $favicon = 'assets/favicon.ico';
 
 $conn = new mysqli($host, $user, $pass, $db, $port);
