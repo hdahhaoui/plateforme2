@@ -165,9 +165,7 @@ if ($pid) {
                                 <label for="status" class="text-info">Statut du projet</label>
                                 <select id="status" name="status" class="form-control form-control-line">
                                     <option value="open" <?= ($row['status'] ?? '')==='open'?'selected':'' ?>>ouvert</option>
-                                    <option value="in progress" <?= ($row['status'] ?? '')==='in progress'?'selected':'' ?>>en cours</option>
                                     <option value="closed" <?= ($row['status'] ?? '')==='closed'?'selected':'' ?>>fermé</option>
-                                    <option value="completed" <?= ($row['status'] ?? '')==='completed'?'selected':'' ?>>terminé</option>
                                 </select>
                             </div>
                         </div>
@@ -229,15 +227,14 @@ if ($pid) {
                                 <input type="hidden" name="pid" value="<?= $p['id'] ?>">
                                 <select name="status" class="form-control form-control-sm mr-2">
                                     <option value="open" <?= $p['status']==='open'?'selected':'' ?>>ouvert</option>
-                                    <option value="in progress" <?= $p['status']==='in progress'?'selected':'' ?>>en cours</option>
                                     <option value="closed" <?= $p['status']==='closed'?'selected':'' ?>>fermé</option>
-                                    <option value="completed" <?= $p['status']==='completed'?'selected':'' ?>>terminé</option>
                                 </select>
                                 <button type="submit" class="btn btn-sm btn-primary">Mettre à jour</button>
                             </form>
                         </td>
                         <td>
                             <a class="btn btn-sm btn-secondary" href="post.php?pid=<?= $p['id'] ?>">Modifier</a>
+                            <a class="btn btn-sm btn-danger" href="include/delete-post.php?pid=<?= $p['id'] ?>" onclick="return confirm('Supprimer ce projet ?');">Supprimer</a>
                         </td>
                     </tr>
                 <?php endwhile; endif; ?>
