@@ -79,7 +79,7 @@ if ($pid) {
     <header class="masthead">
         <div class="container text-center">
             <!--<h2 class="mx-auto mb-5"></h2>-->
-            <div class="sinup-box card">
+            <div class="sinup-box card shadow-lg mb-4">
                 <div class="card-body">
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/<?=($pid ? 'update' : 'add')?>-post.php" method="post" novalidate enctype="multipart/form-data">
                         <h3 class="text-center m-b-20"><?=($pid ? 'Modifier' : 'Publier')?> un projet</h3>
@@ -206,7 +206,7 @@ if ($pid) {
             }
             ?>
             <h4 class="mt-5">Mes projets</h4>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Titre</th>

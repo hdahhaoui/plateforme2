@@ -3,6 +3,7 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: #f7f7f7;
     margin: 0;
+    line-height: 1.6;
 }
 
 .help {
@@ -78,4 +79,34 @@ body {
 .btn-rounded.btn-lg {
     padding: 12px 28px;
     font-size: 18px;
+}
+
+/* Improve form inputs */
+.form-control {
+    border: 1px solid #ced4da;
+    box-shadow: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #6e8efb;
+    box-shadow: 0 0 0 0.2rem rgba(110, 142, 251, 0.25);
+}
+
+/* Table styling */
+table.table {
+    margin-top: 1rem;
+}
+
+table.table thead {
+    background-color: #f1f1f1;
+}
+
+table.table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+table.table td,
+table.table th {
+    vertical-align: middle;
 }
