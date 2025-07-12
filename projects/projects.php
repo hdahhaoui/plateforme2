@@ -46,7 +46,7 @@ if ($search !== '') {
 </head>
 <body>
 <header class="header">
-    <div class="logo">Codify</div>
+    <div class="logo">CELUT-GC</div>
     <div class="user-settings">
         <?php if (!empty($profileImg)): ?>
             <img class="user-profile" src="../php/images/<?= htmlspecialchars($profileImg) ?>" alt="">
