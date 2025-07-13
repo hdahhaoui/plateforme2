@@ -9,6 +9,9 @@ CREATE TABLE IF NOT EXISTS users (
     phone VARCHAR(20),
     address VARCHAR(255),
     profile_img VARCHAR(255),
+    verify_token VARCHAR(128),
+    token_created DATETIME,
+    is_verified TINYINT(1) NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

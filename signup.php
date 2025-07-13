@@ -174,6 +174,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                  </div>
                             
                         </div>
+                        <div class="g-recaptcha mb-3" data-sitekey="<?= $recaptchaSiteKey ?>"></div>
                         <div id="q-box__buttons">
                             <button id="prev-btn" type="button">Previous</button> 
                             <button id="next-btn" type="button" onclick="idk()">Suivant</button>
@@ -211,6 +212,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             document.getElementById('imageLabel').innerText = "Logo de l'entreprise";
         }}
     </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="signup.js"></script>
 
     <!-- FOOTER -->

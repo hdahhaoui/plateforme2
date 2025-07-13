@@ -1,0 +1,4 @@
+ALTER TABLE users
+  ADD COLUMN verify_token VARCHAR(128) NULL,
+  ADD COLUMN token_created DATETIME NULL,
+  ADD COLUMN is_verified TINYINT(1) NOT NULL DEFAULT 0;
