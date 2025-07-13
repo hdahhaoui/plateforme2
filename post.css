@@ -110,3 +110,18 @@ table.table td,
 table.table th {
     vertical-align: middle;
 }
+/* Form alignment for better spacing */
+#postForm .form-group {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#postForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+#postForm .form-control {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
