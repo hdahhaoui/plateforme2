@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/db.php';
+require_once __DIR__.'/send_verification.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name    = trim($_POST['name'] ?? '');
@@ -8,6 +9,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $type    = $_POST['usertype'] ?? 'client';
     $address = trim($_POST['address'] ?? '');
     $phone   = trim($_POST['phone'] ?? '');
+
+    // verify reCAPTCHA
+    $captcha = $_POST['g-recaptcha-response'] ?? '';
+    $verify = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.
+        urlencode($recaptchaSecretKey).'&response='.urlencode($captcha));
+    $verifyData = json_decode($verify, true);
+    if (!$verifyData['success']) {
+        $_SESSION['msg'] = ['type' => 'danger', 'msg' => 'reCAPTCHA invalide'];
+        header('Location: ../signup.php');
+        exit;
+    }
 
     $imgName = null;
     if (!empty($_FILES['image']['name'])) {
@@ -50,6 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $placeholders = "?,?,?,?";
     $typesBind = "ssss";
     $params = [$name, $email, $password, $type];
+
+    $token = bin2hex(random_bytes(32));
+    $tokenDate = date('Y-m-d H:i:s');
+
+    $tokCheck = $mysqli->query("SHOW COLUMNS FROM users LIKE 'verify_token'");
+    if ($tokCheck && $tokCheck->num_rows > 0) {
+        $columns .= ", verify_token, token_created, is_verified";
+        $placeholders .= ",?,?,?";
+        $typesBind .= "ssi";
+        $params[] = $token;
+        $params[] = $tokenDate;
+        $params[] = 0;
+    }
 
     $checkPhone = $mysqli->query("SHOW COLUMNS FROM users LIKE 'phone'");
     if ($checkPhone && $checkPhone->num_rows > 0) {
@@ -133,13 +158,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $msgStmt->execute();
         }
     }
-    $_SESSION['USER_ID'] = $uid;
-    $_SESSION['USER_TYPE'] = $type;
-    if ($type === 'client') {
-        header('Location: ../client.php');
-    } else {
-        header('Location: ../projects/projects.php');
+    if (!empty($token)) {
+        sendVerificationMail($email, $token, $smtpFrom, $smtpName);
     }
+    $_SESSION['msg'] = ['type' => 'success', 'msg' => 'Compte créé, veuillez confirmer votre e-mail'];
+    header('Location: ../login.php');
     exit;
 }
 header('Location: ../signup.php');
