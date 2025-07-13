@@ -64,11 +64,11 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                 <h4>Veuillez selectionner votre type d'utilisateur</h4>
                                 <div class="form-check ps-0 q-box" >
                                     <div class="q-box__question">
-                                        <input class="form-check-input question__input" id="free" name="usertype" type="radio" value="freelancer" > 
+                                        <input class="form-check-input question__input" id="free" name="usertype" type="radio" value="freelancer" onclick="idk()">
                                         <label class="form-check-label question__label" for="free">Enseignant-Chercheur</label>
                                     </div>
                                     <div class="q-box__question">
-                                        <input checked class="form-check-input question__input" id="cli" name="usertype" type="radio" value="client" > 
+                                        <input checked class="form-check-input question__input" id="cli" name="usertype" type="radio" value="client" onclick="idk()">
                                         <label class="form-check-label question__label" for="cli">Partenaire socioéconomique</label>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                             
                            
                             <div class="step">
-                            <div id="freelancer">
+                            <div id="freelancer" style="display:none;">
                                 
                                 <div class="form-check ps-0 q-box">
                                     <div class="q-box__question">
@@ -138,7 +138,7 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                                     </div>
                                 </div>
                                 </div>
-                                <div id="client" style=""> 
+                                <div id="client">
                                 <!-- client -->
                                 <div class="form-check ps-0 q-box">
                                     <div class="q-box__question">
@@ -193,24 +193,25 @@ if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     </div>
     <script>
         function idk()
-        {var free = document.getElementById('free');
+        {
+        var free = document.getElementById('free');
         var client=document.getElementById('cli');
         if(free.checked){
                 document.getElementById('freelancer').style.display="block";
                 document.getElementById('client').style.display="none";
-                document.getElementById('idcli').style.display="none";
-                document.getElementById('idfree').style.display="block"
                 document.getElementById('nameLabel').innerText = 'Nom Complet :';
                 document.getElementById('imageLabel').innerText = "Photo d'identité";
         }
         else if(client.checked){
             document.getElementById('freelancer').style.display="none";
             document.getElementById('client').style.display="block";
-            document.getElementById('idcli').style.display="block";
-            document.getElementById('idfree').style.display="none"
             document.getElementById('nameLabel').innerText = "Nom de l'entreprise :";
             document.getElementById('imageLabel').innerText = "Logo de l'entreprise";
         }}
+
+        document.addEventListener('DOMContentLoaded', idk);
+        document.getElementById('free').addEventListener('change', idk);
+        document.getElementById('cli').addEventListener('change', idk);
     </script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="signup.js"></script>
