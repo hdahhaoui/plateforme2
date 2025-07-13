@@ -40,7 +40,7 @@ body {
 
 .masthead {
     min-height: 100vh;
-    background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,6 +52,7 @@ body {
     margin: auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     border-radius: 10px;
+    background-color: #ffffff;
     overflow: hidden;
 }
 
@@ -104,6 +105,9 @@ table.table thead {
 
 table.table tbody tr:nth-child(even) {
     background-color: #fafafa;
+}
+table.table tbody tr:hover {
+    background-color: #e9f5ff;
 }
 
 table.table td,
